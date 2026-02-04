@@ -4,107 +4,139 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Mayur Dokras | Software Engineer</title>
+  <meta name="description" content="Mayur Dokras — Software Engineer portfolio showcasing mobile, backend, and embedded systems work." />
   <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
-  <header>
-    <h1>Mayur Dokras</h1>
-    <p>Software Engineer | Mobile • Backend • Embedded Systems</p>
-    <div class="links">
-      <a href="mailto:mayurdokras2404@gmail.com">Email</a>
-      <a href="https://www.linkedin.com/" target="_blank" rel="noopener">LinkedIn</a>
-      <a href="Mayur_Dokras_CV.pdf" target="_blank" rel="noopener">Resume</a>
+  <!-- Sticky Nav -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a class="brand" href="#top">Mayur</a>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a class="btn" href="Mayur_Dokras_CV.pdf" target="_blank" rel="noopener">Resume</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <header id="top" class="hero">
+    <div class="hero-inner reveal">
+      <img class="avatar" src="profile.jpg" alt="Mayur Dokras profile photo" />
+      <h1>Mayur Dokras</h1>
+      <p class="subtitle">Software Engineer • Mobile • Backend • Embedded Systems</p>
+
+      <div class="cta">
+        <a class="chip" href="mailto:mayurdokras2404@gmail.com">Email</a>
+        <a class="chip" href="https://www.linkedin.com/" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="chip" href="#projects">View Projects</a>
+      </div>
+
+      <div class="meta">
+        <span>3+ years experience</span>
+        <span>MSc Software Engineering (University of Southampton)</span>
+      </div>
     </div>
   </header>
 
-  <section>
-    <h2>About Me</h2>
-    <p>
-      Software Engineer with 3+ years of industry experience and currently pursuing
-      MSc in Software Engineering at the University of Southampton. Experienced in
-      mobile application development, backend systems, embedded programming, and
-      secure API integrations. Passionate about building scalable, secure, and
-      high-performance applications.
-    </p>
-  </section>
-
-  <section>
-    <h2>Skills</h2>
-    <div class="skills">
-      <span>C</span><span>C++</span><span>Python</span><span>Java</span>
-      <span>ReactJS</span><span>Kotlin</span><span>Swift</span>
-      <span>Flutter / Dart</span><span>Jetpack Compose</span>
-      <span>Firebase</span><span>AWS</span><span>CI/CD</span>
-      <span>REST APIs</span><span>Linux</span>
-    </div>
-  </section>
-
-  <section>
-    <h2>Experience</h2>
-
-    <div class="card">
-      <h3>Backend Developer Intern – University of Southampton</h3>
-      <p class="date">Feb 2025 – Jul 2025</p>
-      <ul>
-        <li>Designed and integrated secure RESTful APIs using UK Government data.</li>
-        <li>Implemented authentication, authorization, encryption, and rate limiting.</li>
-        <li>Deployed production services and maintained CI/CD pipelines.</li>
-      </ul>
-    </div>
-
-    <div class="card">
-      <h3>Associate II – Software Engineer – Capgemini Engineering</h3>
-      <p class="date">Nov 2021 – Nov 2024</p>
-      <ul>
-        <li>Developed automation scripts and resolved 40+ production defects.</li>
-        <li>Worked on GPON technology using C/C++ and Linux systems.</li>
-        <li>Improved system performance and reduced MTTR by 25%.</li>
-      </ul>
-    </div>
-
-    <div class="card">
-      <h3>Freelance Mobile Application Developer</h3>
-      <p class="date">Feb 2021 – Oct 2021</p>
-      <ul>
-        <li>Built Flutter and Swift mobile applications with Firebase backend.</li>
-        <li>Delivered e-commerce, fitness, and grocery delivery apps.</li>
-        <li>Handled full SDLC from design to deployment.</li>
-      </ul>
-    </div>
-  </section>
-
-  <section>
-    <h2>Projects</h2>
-
-    <div class="card">
-      <h3>Link2Feed (MSc Dissertation)</h3>
+  <main class="container">
+    <!-- About -->
+    <section id="about" class="section reveal">
+      <h2>About Me</h2>
       <p>
-        Full-stack Android application using Kotlin, Jetpack Compose, Firebase,
-        and UK Gov APIs. Implemented geolocation filtering, secure SDLC,
-        CI/CD, and scalable backend services.
+        Software Engineer with 3+ years of industry experience and currently pursuing
+        MSc in Software Engineering at the University of Southampton. Experienced in
+        mobile application development, backend systems, embedded programming, and
+        secure API integrations. Passionate about building scalable, secure, and
+        high-performance applications.
       </p>
-    </div>
+    </section>
 
-    <div class="card">
-      <h3>MackFit Workout App</h3>
-      <p>
-        Cross-platform Flutter application with Firebase hosting, JSON storage,
-        responsive UI, and production deployment.
-      </p>
-    </div>
+    <!-- Skills -->
+    <section id="skills" class="section reveal">
+      <h2>Skills</h2>
+      <div class="skills">
+        <span>C</span><span>C++</span><span>Python</span><span>Java</span>
+        <span>ReactJS</span><span>Kotlin</span><span>Swift</span>
+        <span>Flutter / Dart</span><span>Jetpack Compose</span>
+        <span>Firebase</span><span>AWS</span><span>CI/CD</span>
+        <span>REST APIs</span><span>Linux</span>
+      </div>
+    </section>
 
-    <div class="card">
-      <h3>Image Re-Ranking Based on Topic Diversity</h3>
-      <p>
-        Web application using JavaScript, PHP, MySQL, and HTML/CSS with
-        optimized image ranking algorithms.
-      </p>
-    </div>
-  </section>
+    <!-- Experience -->
+    <section id="experience" class="section reveal">
+      <h2>Experience</h2>
 
-  <footer>
-    <p>© 2026 Mayur Dokras • Built with HTML &amp; CSS</p>
-  </footer>
-</body>
-</html>
+      <div class="grid">
+        <article class="card reveal">
+          <div class="card-head">
+            <h3>Backend Developer Intern</h3>
+            <span class="tag">University of Southampton</span>
+          </div>
+          <p class="date">Feb 2025 – Jul 2025</p>
+          <ul>
+            <li>Integrated secure RESTful APIs using UK Government datasets.</li>
+            <li>Implemented auth, authorization, encryption, and rate limiting.</li>
+            <li>Deployed production services and maintained CI/CD pipelines.</li>
+          </ul>
+        </article>
+
+        <article class="card reveal">
+          <div class="card-head">
+            <h3>Associate II – Software Engineer</h3>
+            <span class="tag">Capgemini Engineering</span>
+          </div>
+          <p class="date">Nov 2021 – Nov 2024</p>
+          <ul>
+            <li>Built automation scripts and resolved 40+ production defects.</li>
+            <li>Worked on GPON technology with C/C++ and Linux systems.</li>
+            <li>Improved system performance and reduced MTTR by ~25%.</li>
+          </ul>
+        </article>
+
+        <article class="card reveal">
+          <div class="card-head">
+            <h3>Freelance Mobile App Developer</h3>
+            <span class="tag">Self-employed</span>
+          </div>
+          <p class="date">Feb 2021 – Oct 2021</p>
+          <ul>
+            <li>Developed Flutter and Swift apps with Firebase backend.</li>
+            <li>Delivered e-commerce, fitness, and grocery delivery apps.</li>
+            <li>Managed full SDLC: design → testing → deployment.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" class="section reveal">
+      <h2>Projects</h2>
+
+      <div class="grid">
+        <article class="card project reveal">
+          <div class="card-head">
+            <h3>Link2Feed (MSc Dissertation)</h3>
+            <span class="tag">Kotlin • Firebase • APIs</span>
+          </div>
+          <p>
+            Full-stack Android app using Kotlin, Jetpack Compose, Firebase, and UK Gov APIs.
+            Built verification + geolocation filtering and scalable backend services.
+          </p>
+          <div class="actions">
+            <a class="btn-outline" href="#" target="_blank" rel="noopener">Code (add link)</a>
+            <a class="btn-outline" href="#" target="_blank" rel="noopener">Demo (add link)</a>
+          </div>
+        </article>
+
+        <article class="card project reveal">
+          <div class="card-head">
+            <h3>MackFit Workout App</h3>
+            <span class="tag">Flutter • Firebase</span>
+          </div>
+          <p>
