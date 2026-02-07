@@ -1,4 +1,8 @@
+/* ========================================
+   CSS Variables & Reset
+======================================== */
 :root {
+    /* Colors - Modern Dark Theme with Accent */
     --bg-primary: #0a0a0f;
     --bg-secondary: #12121a;
     --bg-tertiary: #1a1a25;
@@ -834,6 +838,104 @@ body {
 .cert-card p {
     color: var(--text-muted);
     font-size: 0.85rem;
+}
+
+/* ========================================
+   Workshops Section
+======================================== */
+.workshops {
+    background: var(--bg-secondary);
+}
+
+.workshops-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 24px;
+}
+
+.workshop-card {
+    background: var(--bg-card);
+    border-radius: 16px;
+    padding: 32px;
+    border: 1px solid var(--border-color);
+    transition: all var(--transition-medium);
+    position: relative;
+    overflow: hidden;
+}
+
+.workshop-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--accent-gradient);
+    opacity: 0;
+    transition: opacity var(--transition-medium);
+}
+
+.workshop-card:hover {
+    border-color: var(--accent-primary);
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.workshop-card:hover::before {
+    opacity: 1;
+}
+
+.workshop-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+
+.workshop-icon {
+    width: 56px;
+    height: 56px;
+    background: rgba(99, 102, 241, 0.15);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent-primary);
+}
+
+.workshop-type {
+    padding: 6px 14px;
+    background: rgba(168, 85, 247, 0.15);
+    color: #c084fc;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.workshop-card h3 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.workshop-venue {
+    color: var(--accent-secondary);
+    font-weight: 500;
+    font-size: 0.95rem;
+    margin-bottom: 16px;
+}
+
+.workshop-desc {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
+
+@media (max-width: 768px) {
+    .workshops-grid {
+        grid-template-columns: 1fr;
+    }
 }
 
 /* ========================================
