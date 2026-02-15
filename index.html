@@ -46,7 +46,7 @@
                 <p class="tagline">Building secure, high-performance applications with 3+ years of industry experience</p>
                 <div class="availability-badge">
                     <span class="status-dot"></span>
-                    <span>Available for Global Opportunities & Relocation</span>
+                    <span>Open to UK & EU opportunities</span>
                 </div>
                 <div class="hero-buttons">
                     <a href="#contact" class="btn btn-primary">Get In Touch</a>
@@ -843,7 +843,6 @@
                 typingEl.remove();
                 if (res.ok && data.reply) {
                     addMessage(data.reply, false);
-                    showSuggestionsAfterResponse();
                 } else {
                     const errMsg = data.error || (res.status === 401 ? 'API key not set on Vercel.' : res.status === 404 ? 'Wrong API URL. Check CHAT_API_URL in index.html.' : `Server error (${res.status}). Try again later.`);
                     addMessage(errMsg, false);
@@ -853,6 +852,7 @@
                 addMessage('Unable to connect. Check CHAT_API_URL or your internet.', false);
             }
 
+            showSuggestionsAfterResponse();
             chatSend.disabled = false;
         }
 
@@ -860,15 +860,6 @@
         chatInput.addEventListener('keypress', (e) => {
             if (e.key === 'Enter') sendMessage();
         });
-
-        document.querySelectorAll('.suggestion-chip').forEach(chip => {
-            chip.addEventListener('click', () => {
-                const question = chip.dataset.question;
-                if (question) {
-                    chatInput.value = question;
-                    sendMessage();
-document.getElementById('chatSuggestions')?.classList.add('hidden');
-        }
 
         function showSuggestionsAfterResponse() {
             const el = document.getElementById('chatSuggestions');
@@ -879,6 +870,14 @@ document.getElementById('chatSuggestions')?.classList.add('hidden');
                 chatMessages.scrollTop = chatMessages.scrollHeight;
             }
         }
+
+        document.querySelectorAll('.suggestion-chip').forEach(chip => {
+            chip.addEventListener('click', () => {
+                const question = chip.dataset.question;
+                if (question) {
+                    chatInput.value = question;
+                    sendMessage();
+                }
             });
         });
     </script>
