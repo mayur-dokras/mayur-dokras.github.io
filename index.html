@@ -10,6 +10,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
 </head>
 <body>
+    <!-- Custom Cursor (desktop only) -->
+    <div class="cursor-dot" id="cursorDot">&lt;/&gt;</div>
+    <div class="cursor-glow" id="cursorGlow"></div>
+
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
@@ -42,7 +46,7 @@
                 <p class="tagline">Building secure, high-performance applications with 3+ years of industry experience</p>
                 <div class="availability-badge">
                     <span class="status-dot"></span>
-                    <span>Open to UK, EU & US Opportunities</span>
+                    <span>Open to UK & EU opportunities</span>
                 </div>
                 <div class="hero-buttons">
                     <a href="#contact" class="btn btn-primary">Get In Touch</a>
@@ -307,57 +311,6 @@
         </div>
     </section>
 
-
-    <!-- Workshops & Engagement Section -->
-    <section id="workshops" class="workshops section">
-        <div class="container">
-            <h2 class="section-title slide-up">Workshops & Engagement</h2>
-            <div class="workshops-grid">
-                <div class="workshop-card slide-up">
-                    <div class="workshop-header">
-                        <div class="workshop-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-                            </svg>
-                        </div>
-                        <span class="workshop-type">Presentation</span>
-                    </div>
-                    <h3>Dark Web Security Risks</h3>
-                    <p class="workshop-venue">University of Southampton, UK</p>
-                    <p class="workshop-desc">Presented an in-depth analysis of Dark Web risks including Tor/I2P networks, the Silk Road case study (operation and FBI takedown), ransomware-as-a-service, and credential stuffing attacks. Outlined organizational impacts such as data breaches and brand risk, along with mitigation strategies including dark-web monitoring, threat intelligence, and incident response.</p>
-                    <div class="tech-tags">
-                        <span class="tag">Cybersecurity</span>
-                        <span class="tag">Dark Web</span>
-                        <span class="tag">Threat Intelligence</span>
-                    </div>
-                </div>
-
-                <div class="workshop-card slide-up">
-                    <div class="workshop-header">
-                        <div class="workshop-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                                <circle cx="9" cy="7" r="4"></circle>
-                                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-                                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-                            </svg>
-                        </div>
-                        <span class="workshop-type">Guest Lecture</span>
-                    </div>
-                    <h3>Mobile Application Development</h3>
-                    <p class="workshop-venue">AISSMS IOIT, India</p>
-                    <p class="workshop-desc">Delivered a guest lecture to 3rd year Bachelor's students, demonstrating a live Flutter/Dart calculator app covering UI widgets, event handling, and state management. Explained widget layout concepts and engaged 40+ students with practical examples on database selection (relational vs NoSQL, Firebase, PostgreSQL) and scalability strategies.</p>
-                    <div class="tech-tags">
-                        <span class="tag">Flutter</span>
-                        <span class="tag">Dart</span>
-                        <span class="tag">Firebase</span>
-                        <span class="tag">Teaching</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
     <!-- Skills Section -->
     <section id="skills" class="skills section">
         <div class="container">
@@ -519,6 +472,56 @@
         </div>
     </section>
 
+    <!-- Workshops & Engagement Section -->
+    <section id="workshops" class="workshops section">
+        <div class="container">
+            <h2 class="section-title slide-up">Workshops & Engagement</h2>
+            <div class="workshops-grid">
+                <div class="workshop-card slide-up">
+                    <div class="workshop-header">
+                        <div class="workshop-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                            </svg>
+                        </div>
+                        <span class="workshop-type">Presentation</span>
+                    </div>
+                    <h3>Dark Web Security Risks</h3>
+                    <p class="workshop-venue">University of Southampton, UK</p>
+                    <p class="workshop-desc">Presented an in-depth analysis of Dark Web risks including Tor/I2P networks, the Silk Road case study (operation and FBI takedown), ransomware-as-a-service, and credential stuffing attacks. Outlined organizational impacts such as data breaches and brand risk, along with mitigation strategies including dark-web monitoring, threat intelligence, and incident response.</p>
+                    <div class="tech-tags">
+                        <span class="tag">Cybersecurity</span>
+                        <span class="tag">Dark Web</span>
+                        <span class="tag">Threat Intelligence</span>
+                    </div>
+                </div>
+
+                <div class="workshop-card slide-up">
+                    <div class="workshop-header">
+                        <div class="workshop-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="9" cy="7" r="4"></circle>
+                                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                            </svg>
+                        </div>
+                        <span class="workshop-type">Guest Lecture</span>
+                    </div>
+                    <h3>Mobile Application Development</h3>
+                    <p class="workshop-venue">AISSMS IOIT, India</p>
+                    <p class="workshop-desc">Delivered a guest lecture to 3rd year Bachelor's students, demonstrating a live Flutter/Dart calculator app covering UI widgets, event handling, and state management. Explained widget layout concepts and engaged 40+ students with practical examples on database selection (relational vs NoSQL, Firebase, PostgreSQL) and scalability strategies.</p>
+                    <div class="tech-tags">
+                        <span class="tag">Flutter</span>
+                        <span class="tag">Dart</span>
+                        <span class="tag">Firebase</span>
+                        <span class="tag">Teaching</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Contact Section -->
     <section id="contact" class="contact section">
         <div class="container">
@@ -558,6 +561,42 @@
         </div>
     </section>
 
+    <!-- AI Chat Widget -->
+    <div class="chat-widget">
+        <button class="chat-toggle" id="chatToggle" aria-label="Open AI chat">
+            <svg class="chat-icon" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+            </svg>
+            <span class="chat-badge">AI</span>
+        </button>
+        <div class="chat-panel" id="chatPanel">
+            <div class="chat-header">
+                <div class="chat-header-content">
+                    <span class="chat-avatar">MD</span>
+                    <div>
+                        <h3>Ask about Mayur</h3>
+                        <p>AI assistant for recruiters</p>
+                    </div>
+                </div>
+                <button class="chat-close" id="chatClose" aria-label="Close chat">&times;</button>
+            </div>
+            <div class="chat-messages" id="chatMessages">
+                <div class="chat-message bot">
+                    <p>Hi! I'm an AI trained on Mayur's experience. Ask me anything about his work experience, skills, projects, or education. How can I help?</p>
+                </div>
+            </div>
+            <div class="chat-input-area">
+                <input type="text" id="chatInput" placeholder="Ask about Mayur's experience..." autocomplete="off">
+                <button class="chat-send" id="chatSend" aria-label="Send">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="22" y1="2" x2="11" y2="13"></line>
+                        <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
@@ -566,6 +605,40 @@
     </footer>
 
     <script>
+        // Custom Cursor Effect (desktop only)
+        if (matchMedia('(hover: hover)').matches) {
+            const cursorDot = document.getElementById('cursorDot');
+            const cursorGlow = document.getElementById('cursorGlow');
+            const clickables = document.querySelectorAll('a, button, .btn, .nav-link, .contact-card, .project-card, .workshop-card, .education-card, .cert-card');
+
+            let mouseX = 0, mouseY = 0;
+            let glowX = 0, glowY = 0;
+
+            document.addEventListener('mousemove', (e) => {
+                mouseX = e.clientX;
+                mouseY = e.clientY;
+
+                cursorDot.style.left = mouseX + 'px';
+                cursorDot.style.top = mouseY + 'px';
+            });
+
+            function animateGlow() {
+                glowX += (mouseX - glowX) * 0.15;
+                glowY += (mouseY - glowY) * 0.15;
+
+                cursorGlow.style.left = glowX + 'px';
+                cursorGlow.style.top = glowY + 'px';
+
+                requestAnimationFrame(animateGlow);
+            }
+            animateGlow();
+
+            clickables.forEach(el => {
+                el.addEventListener('mouseenter', () => document.body.classList.add('hovering-clickable'));
+                el.addEventListener('mouseleave', () => document.body.classList.remove('hovering-clickable'));
+            });
+        }
+
         // Mobile Navigation Toggle
         const hamburger = document.querySelector('.hamburger');
         const navMenu = document.querySelector('.nav-menu');
@@ -655,6 +728,73 @@
         }, { threshold: 0.5 });
 
         skillBars.forEach(bar => skillObserver.observe(bar));
+
+        // AI Chat Widget - Update CHAT_API_URL if your Vercel URL is different
+        const CHAT_API_URL = 'https://mayur-dokras-github-io.vercel.app/api/chat';
+        const chatToggle = document.getElementById('chatToggle');
+        const chatPanel = document.getElementById('chatPanel');
+        const chatClose = document.getElementById('chatClose');
+        const chatMessages = document.getElementById('chatMessages');
+        const chatInput = document.getElementById('chatInput');
+        const chatSend = document.getElementById('chatSend');
+
+        chatToggle.addEventListener('click', () => {
+            chatPanel.classList.toggle('open');
+            if (chatPanel.classList.contains('open')) chatInput.focus();
+        });
+
+        chatClose.addEventListener('click', () => chatPanel.classList.remove('open'));
+
+        function addMessage(text, isUser) {
+            const div = document.createElement('div');
+            div.className = `chat-message ${isUser ? 'user' : 'bot'}`;
+            div.innerHTML = `<p>${text}</p>`;
+            chatMessages.appendChild(div);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function addTyping() {
+            const div = document.createElement('div');
+            div.className = 'chat-message bot typing';
+            div.innerHTML = '<p>Thinking...</p>';
+            div.dataset.typing = 'true';
+            chatMessages.appendChild(div);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+            return div;
+        }
+
+        async function sendMessage() {
+            const message = chatInput.value.trim();
+            if (!message) return;
+
+            addMessage(message, true);
+            chatInput.value = '';
+            chatSend.disabled = true;
+
+            const typingEl = addTyping();
+
+            try {
+                const res = await fetch(CHAT_API_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ message })
+                });
+                const data = await res.json();
+
+                typingEl.remove();
+                addMessage(data.reply || 'Sorry, something went wrong.', false);
+            } catch (err) {
+                typingEl.remove();
+                addMessage('Unable to connect. Please check your internet or try again later.', false);
+            }
+
+            chatSend.disabled = false;
+        }
+
+        chatSend.addEventListener('click', sendMessage);
+        chatInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') sendMessage();
+        });
     </script>
 </body>
 </html>
