@@ -46,7 +46,7 @@
                 <p class="tagline">Building secure, high-performance applications with 3+ years of industry experience</p>
                 <div class="availability-badge">
                     <span class="status-dot"></span>
-                    <span>Available for global opportunities & relocation</span>
+                    <span>Open to UK & EU opportunities</span>
                 </div>
                 <div class="hero-buttons">
                     <a href="#contact" class="btn btn-primary">Get In Touch</a>
@@ -561,32 +561,61 @@
         </div>
     </section>
 
-    <!-- AI Chat Widget -->
+    <!-- AI Chat Widget - MACK -->
     <div class="chat-widget">
-        <button class="chat-toggle" id="chatToggle" aria-label="Open AI chat">
-            <svg class="chat-icon" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-            </svg>
-            <span class="chat-badge">AI</span>
-        </button>
+        <div class="chat-btn-wrapper">
+            <div class="chat-popup-msg">
+                <span>Ask me about Mayur !</span>
+                <div class="popup-tail"></div>
+            </div>
+            <button class="chat-toggle" id="chatToggle" aria-label="Chat with MACK">
+                <svg class="chat-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                </svg>
+            </button>
+        </div>
         <div class="chat-panel" id="chatPanel">
             <div class="chat-header">
                 <div class="chat-header-content">
-                    <span class="chat-avatar">MD</span>
-                    <div>
-                        <h3>Ask about Mayur</h3>
-                        <p>AI assistant for recruiters</p>
+                    <div class="chat-robot-left">
+                        <svg class="robot-icon-header" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="4" y="10" width="16" height="10" rx="2"></rect>
+                            <circle cx="9" cy="15" r="1"></circle>
+                            <circle cx="15" cy="15" r="1"></circle>
+                            <path d="M9 6V4"></path>
+                            <path d="M15 6V4"></path>
+                            <path d="M9 10h6"></path>
+                        </svg>
+                    </div>
+                    <div class="chat-header-text">
+                        <h3>MACK</h3>
+                        <p>Mayur's AI Career Assistant</p>
+                        <span class="chat-status"><span class="status-dot-small"></span> Online</span>
                     </div>
                 </div>
-                <button class="chat-close" id="chatClose" aria-label="Close chat">&times;</button>
+                <button class="chat-close" id="chatClose" aria-label="Close chat">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
             </div>
             <div class="chat-messages" id="chatMessages">
                 <div class="chat-message bot">
-                    <p>Hi! I'm an AI trained on Mayur's experience. Ask me anything about his work experience, skills, projects, or education. How can I help?</p>
+                    <p>Hi! I'm <strong>MACK</strong> — trained on Mayur's experience. Ask me about his work, skills, projects, or education. Try a question below or type your own!</p>
+                </div>
+                <div class="chat-suggestions" id="chatSuggestions">
+                    <span class="suggestion-label">Questions employers often ask:</span>
+                    <button class="suggestion-chip" data-question="What is Mayur's experience at Capgemini?">Capgemini experience</button>
+                    <button class="suggestion-chip" data-question="What are Mayur's technical skills?">Technical skills</button>
+                    <button class="suggestion-chip" data-question="Tell me about Mayur's projects">Projects</button>
+                    <button class="suggestion-chip" data-question="What is Mayur's education?">Education</button>
+                    <button class="suggestion-chip" data-question="What did Mayur do at University of Southampton?">Southampton role</button>
+                    <button class="suggestion-chip" data-question="Is Mayur open to work in UK?">UK opportunities</button>
+                    <button class="suggestion-chip" data-question="What programming languages does Mayur know?">Languages</button>
+                    <button class="suggestion-chip" data-question="Does Mayur have mobile development experience?">Mobile development</button>
+                    <button class="suggestion-chip" data-question="What certifications does Mayur have?">Certifications</button>
                 </div>
             </div>
             <div class="chat-input-area">
-                <input type="text" id="chatInput" placeholder="Ask about Mayur's experience..." autocomplete="off">
+                <input type="text" id="chatInput" placeholder="Ask MACK about Mayur..." autocomplete="off">
                 <button class="chat-send" id="chatSend" aria-label="Send">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <line x1="22" y1="2" x2="11" y2="13"></line>
@@ -738,17 +767,40 @@
         const chatInput = document.getElementById('chatInput');
         const chatSend = document.getElementById('chatSend');
 
+        const chatPopupMsg = document.querySelector('.chat-popup-msg');
+
         chatToggle.addEventListener('click', () => {
             chatPanel.classList.toggle('open');
-            if (chatPanel.classList.contains('open')) chatInput.focus();
+            if (chatPanel.classList.contains('open')) {
+                chatInput.focus();
+                chatPopupMsg?.classList.add('hidden');
+            } else {
+                chatPopupMsg?.classList.remove('hidden');
+            }
         });
 
-        chatClose.addEventListener('click', () => chatPanel.classList.remove('open'));
+        chatClose.addEventListener('click', () => {
+            chatPanel.classList.remove('open');
+            chatPopupMsg?.classList.remove('hidden');
+        });
+
+        function formatBotResponse(text) {
+            if (!text) return '';
+            let s = String(text)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;');
+            s = s.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+            s = s.replace(/\n/g, '<br>');
+            s = s.replace(/(^|<br>)\s*[\*\-]\s+/g, '$1• ');
+            return s;
+        }
 
         function addMessage(text, isUser) {
             const div = document.createElement('div');
             div.className = `chat-message ${isUser ? 'user' : 'bot'}`;
-            div.innerHTML = `<p>${text}</p>`;
+            const content = isUser ? text.replace(/</g, '&lt;').replace(/>/g, '&gt;') : formatBotResponse(text);
+            div.innerHTML = `<p>${content}</p>`;
             chatMessages.appendChild(div);
             chatMessages.scrollTop = chatMessages.scrollHeight;
         }
@@ -770,6 +822,7 @@
             addMessage(message, true);
             chatInput.value = '';
             chatSend.disabled = true;
+            document.getElementById('chatSuggestions')?.classList.add('hidden');
 
             const typingEl = addTyping();
 
@@ -779,13 +832,19 @@
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ message })
                 });
-                const data = await res.json();
+                const data = await res.json().catch(() => ({}));
 
                 typingEl.remove();
-                addMessage(data.reply || 'Sorry, something went wrong.', false);
+                if (res.ok && data.reply) {
+                    addMessage(data.reply, false);
+                    showSuggestionsAfterResponse();
+                } else {
+                    const errMsg = data.error || (res.status === 401 ? 'API key not set on Vercel.' : res.status === 404 ? 'Wrong API URL. Check CHAT_API_URL in index.html.' : `Server error (${res.status}). Try again later.`);
+                    addMessage(errMsg, false);
+                }
             } catch (err) {
                 typingEl.remove();
-                addMessage('Unable to connect. Please check your internet or try again later.', false);
+                addMessage('Unable to connect. Check CHAT_API_URL or your internet.', false);
             }
 
             chatSend.disabled = false;
@@ -794,6 +853,27 @@
         chatSend.addEventListener('click', sendMessage);
         chatInput.addEventListener('keypress', (e) => {
             if (e.key === 'Enter') sendMessage();
+        });
+
+        document.querySelectorAll('.suggestion-chip').forEach(chip => {
+            chip.addEventListener('click', () => {
+                const question = chip.dataset.question;
+                if (question) {
+                    chatInput.value = question;
+                    sendMessage();
+document.getElementById('chatSuggestions')?.classList.add('hidden');
+        }
+
+        function showSuggestionsAfterResponse() {
+            const el = document.getElementById('chatSuggestions');
+            if (el) {
+                const label = el.querySelector('.suggestion-label');
+                if (label) label.textContent = 'More questions:';
+                el.classList.remove('hidden');
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }
+        }
+            });
         });
     </script>
 </body>
