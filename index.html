@@ -10,11 +10,19 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Custom Cursor (desktop only) -->
+    <div class="cursor-bg-shine-wrap">
+        <div class="cursor-bg-shine" id="cursorBgShine" aria-hidden="true"></div>
+        <div class="cursor-bg-shine-parallax" id="cursorBgShineParallax" aria-hidden="true"></div>
+    </div>
     <div class="cursor-dot" id="cursorDot">&lt;/&gt;</div>
     <div class="cursor-glow" id="cursorGlow"></div>
 
-    <!-- Navigation -->
+    <div class="welcome-overlay" id="welcomeOverlay" aria-live="polite">
+        <div class="welcome-overlay-content">
+            <p class="welcome-message" id="welcomeMessage"></p>
+        </div>
+    </div>
+
     <nav class="navbar">
         <div class="nav-container">
             <a href="#home" class="nav-logo">MD</a>
@@ -35,14 +43,14 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="hero-bg"></div>
         <div class="hero-content">
             <div class="hero-text fade-in">
                 <p class="greeting">Hello, I'm</p>
-                <h1 class="name">Mayur Dokras</h1>
+                <h1 class="name" id="heroName">Mayur Dokras</h1>
                 <h2 class="title">Software Engineer</h2>
+                <p class="title-sub">Mobile • Backend • Full-Stack Developer</p>
                 <p class="tagline">Building secure, high-performance applications with 3+ years of industry experience</p>
                 <div class="availability-badge">
                     <span class="status-dot"></span>
@@ -68,7 +76,6 @@
         </div>
     </section>
 
-    <!-- About Section -->
     <section id="about" class="about section">
         <div class="container">
             <h2 class="section-title slide-up">About Me</h2>
@@ -96,7 +103,6 @@
         </div>
     </section>
 
-    <!-- Experience Section -->
     <section id="experience" class="experience section">
         <div class="container">
             <h2 class="section-title slide-up">Work Experience</h2>
@@ -176,7 +182,6 @@
         </div>
     </section>
 
-    <!-- Education Section -->
     <section id="education" class="education section">
         <div class="container">
             <h2 class="section-title slide-up">Education</h2>
@@ -221,7 +226,6 @@
         </div>
     </section>
 
-    <!-- Projects Section -->
     <section id="projects" class="projects section">
         <div class="container">
             <h2 class="section-title slide-up">Featured Projects</h2>
@@ -311,7 +315,6 @@
         </div>
     </section>
 
-    <!-- Skills Section -->
     <section id="skills" class="skills section">
         <div class="container">
             <h2 class="section-title slide-up">Skills & Technologies</h2>
@@ -413,7 +416,6 @@
         </div>
     </section>
 
-    <!-- Certifications Section -->
     <section id="certifications" class="certifications section">
         <div class="container">
             <h2 class="section-title slide-up">Certifications</h2>
@@ -472,7 +474,6 @@
         </div>
     </section>
 
-    <!-- Workshops & Engagement Section -->
     <section id="workshops" class="workshops section">
         <div class="container">
             <h2 class="section-title slide-up">Workshops & Engagement</h2>
@@ -522,7 +523,6 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
     <section id="contact" class="contact section">
         <div class="container">
             <h2 class="section-title slide-up">Get In Touch</h2>
@@ -561,7 +561,6 @@
         </div>
     </section>
 
-    <!-- AI Chat Widget - MACK -->
     <div class="chat-widget">
         <div class="chat-btn-wrapper">
             <div class="chat-popup-msg">
@@ -632,7 +631,6 @@
         </div>
     </div>
 
-    <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <p>&copy; 2026 Mayur Dokras. Built with passion.</p>
@@ -640,7 +638,34 @@
     </footer>
 
     <script>
-        // Custom Cursor Effect (desktop only)
+        (function initWelcomeOverlay() {
+            const overlay = document.getElementById('welcomeOverlay');
+            const messageEl = document.getElementById('welcomeMessage');
+            const VISIT_KEY = 'portfolio_visited';
+            const SESSION_KEY = 'welcome_shown';
+
+            if (!overlay || !messageEl) return;
+
+            if (sessionStorage.getItem(SESSION_KEY) === 'true') {
+                overlay.classList.add('hidden');
+                return;
+            }
+
+            const isReturning = localStorage.getItem(VISIT_KEY) === 'true';
+
+            if (isReturning) {
+                messageEl.innerHTML = 'Welcome back ! <span class="highlight">Great to see you again.</span><br><br>I hope you find something interesting here...';
+            } else {
+                messageEl.innerHTML = 'Hey, thanks for stopping by! <span class="highlight">Really glad you\'re here.</span><br><br>Take a look around — I would love to connect.';
+            }
+
+            overlay.addEventListener('click', () => {
+                overlay.classList.add('hidden');
+                localStorage.setItem(VISIT_KEY, 'true');
+                sessionStorage.setItem(SESSION_KEY, 'true');
+            });
+        })();
+
         if (matchMedia('(hover: hover)').matches) {
             const cursorDot = document.getElementById('cursorDot');
             const cursorGlow = document.getElementById('cursorGlow');
@@ -648,6 +673,8 @@
 
             let mouseX = 0, mouseY = 0;
             let glowX = 0, glowY = 0;
+            let shineX = 0, shineY = 0;
+            let shineX2 = 0, shineY2 = 0;
 
             document.addEventListener('mousemove', (e) => {
                 mouseX = e.clientX;
@@ -660,9 +687,18 @@
             function animateGlow() {
                 glowX += (mouseX - glowX) * 0.15;
                 glowY += (mouseY - glowY) * 0.15;
+                shineX += (mouseX - shineX) * 0.1;
+                shineY += (mouseY - shineY) * 0.1;
+                shineX2 += (mouseX - shineX2) * 0.04;
+                shineY2 += (mouseY - shineY2) * 0.04;
 
                 cursorGlow.style.left = glowX + 'px';
                 cursorGlow.style.top = glowY + 'px';
+
+                document.documentElement.style.setProperty('--cursor-x', shineX + 'px');
+                document.documentElement.style.setProperty('--cursor-y', shineY + 'px');
+                document.documentElement.style.setProperty('--cursor-x2', shineX2 + 'px');
+                document.documentElement.style.setProperty('--cursor-y2', shineY2 + 'px');
 
                 requestAnimationFrame(animateGlow);
             }
@@ -672,9 +708,28 @@
                 el.addEventListener('mouseenter', () => document.body.classList.add('hovering-clickable'));
                 el.addEventListener('mouseleave', () => document.body.classList.remove('hovering-clickable'));
             });
+
+            const heroName = document.getElementById('heroName');
+            if (heroName) {
+                const updateNameSpotlight = (e) => {
+                    const rect = heroName.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    const inside = x >= 0 && x <= rect.width && y >= 0 && y <= rect.height;
+                    if (inside) {
+                        document.body.classList.add('hovering-clickable');
+                        heroName.style.setProperty('--name-x', x + 'px');
+                        heroName.style.setProperty('--name-y', y + 'px');
+                    } else {
+                        document.body.classList.remove('hovering-clickable');
+                        heroName.style.setProperty('--name-x', '-999px');
+                        heroName.style.setProperty('--name-y', '-999px');
+                    }
+                };
+                document.addEventListener('mousemove', updateNameSpotlight);
+            }
         }
 
-        // Mobile Navigation Toggle
         const hamburger = document.querySelector('.hamburger');
         const navMenu = document.querySelector('.nav-menu');
 
@@ -690,7 +745,6 @@
             });
         });
 
-        // Navbar scroll effect
         window.addEventListener('scroll', () => {
             const navbar = document.querySelector('.navbar');
             if (window.scrollY > 50) {
@@ -700,7 +754,6 @@
             }
         });
 
-        // Scroll animations using Intersection Observer
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
@@ -718,7 +771,6 @@
             observer.observe(el);
         });
 
-        // Smooth scroll for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
@@ -732,7 +784,6 @@
             });
         });
 
-        // Active nav link on scroll
         const sections = document.querySelectorAll('section[id]');
         
         window.addEventListener('scroll', () => {
@@ -752,7 +803,6 @@
             });
         });
 
-        // Skill bar animation
         const skillBars = document.querySelectorAll('.skill-progress');
         const skillObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -764,7 +814,6 @@
 
         skillBars.forEach(bar => skillObserver.observe(bar));
 
-        // AI Chat Widget - Update CHAT_API_URL if your Vercel URL is different
         const CHAT_API_URL = 'https://mayur-dokras-github-io.vercel.app/api/chat';
         const chatToggle = document.getElementById('chatToggle');
         const chatPanel = document.getElementById('chatPanel');
