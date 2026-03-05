@@ -13,15 +13,12 @@
     --border-color: rgba(255, 255, 255, 0.08);
     --shadow-color: rgba(0, 0, 0, 0.3);
     
-    /* Typography */
     --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     --font-mono: 'Fira Code', monospace;
     
-    /* Spacing */
     --section-padding: 100px 0;
     --container-width: 1200px;
     
-    /* Transitions */
     --transition-fast: 0.2s ease;
     --transition-medium: 0.3s ease;
     --transition-slow: 0.5s ease;
@@ -45,12 +42,73 @@ body {
     overflow-x: hidden;
 }
 
-/* Custom cursor - desktop only */
+.cursor-bg-shine-wrap {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.cursor-bg-shine {
+    position: absolute;
+    inset: 0;
+    background: 
+        radial-gradient(
+            ellipse 260px 160px at var(--cursor-x, 50%) var(--cursor-y, 50%),
+            rgba(99, 102, 241, 0.16) 0%,
+            rgba(139, 92, 246, 0.08) 30%,
+            transparent 65%
+        ),
+        radial-gradient(
+            ellipse 100px 70px at var(--cursor-x, 50%) var(--cursor-y, 50%),
+            rgba(129, 140, 248, 0.22) 0%,
+            rgba(139, 92, 246, 0.08) 45%,
+            transparent 70%
+        ),
+        radial-gradient(
+            circle 35px at calc(var(--cursor-x, 50%) + 45px) calc(var(--cursor-y, 50%) - 25px),
+            rgba(168, 85, 247, 0.12) 0%,
+            transparent 70%
+        ),
+        radial-gradient(
+            circle 25px at calc(var(--cursor-x, 50%) - 30px) calc(var(--cursor-y, 50%) + 35px),
+            rgba(99, 102, 241, 0.1) 0%,
+            transparent 70%
+        );
+    opacity: 1;
+}
+
+.cursor-bg-shine-parallax {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+        ellipse 350px 220px at var(--cursor-x2, 50%) var(--cursor-y2, 50%),
+        rgba(99, 102, 241, 0.06) 0%,
+        rgba(139, 92, 246, 0.03) 35%,
+        transparent 65%
+    );
+    opacity: 1;
+}
+
+.cursor-bg-shine-wrap::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 100% 100% at 50% 50%, transparent 50%, rgba(10, 10, 15, 0.2) 100%);
+    pointer-events: none;
+}
+
+@media (hover: none) or (pointer: coarse) {
+    .cursor-bg-shine-wrap {
+        display: none !important;
+    }
+}
+
 .cursor-dot,
 .cursor-glow {
     position: fixed;
     pointer-events: none;
-    z-index: 9999;
+    z-index: 10001;
     border-radius: 50%;
     transition: transform 0.15s ease-out;
 }
@@ -96,9 +154,55 @@ body.hovering-clickable .cursor-glow {
     }
 }
 
-/* ========================================
-   Utility Classes
-======================================== */
+.welcome-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    background: rgba(10, 10, 15, 0.95);
+    backdrop-filter: blur(12px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 1;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.welcome-overlay.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.welcome-overlay-content {
+    text-align: center;
+    padding: 48px 40px;
+    max-width: 480px;
+    animation: welcomeFadeIn 0.6s ease-out;
+}
+
+@keyframes welcomeFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.welcome-message {
+    font-size: 1.25rem;
+    line-height: 1.7;
+    color: var(--text-primary);
+    margin-bottom: 0;
+}
+
+.welcome-message .highlight {
+    color: var(--accent-secondary);
+    font-weight: 600;
+}
+
 .container {
     max-width: var(--container-width);
     margin: 0 auto;
@@ -121,9 +225,6 @@ body.hovering-clickable .cursor-glow {
     background-clip: text;
 }
 
-/* ========================================
-   Animation Classes
-======================================== */
 .fade-in {
     opacity: 0;
     transform: translateY(20px);
@@ -146,15 +247,11 @@ body.hovering-clickable .cursor-glow {
     transform: translateY(0);
 }
 
-/* Staggered animation delays */
 .slide-up:nth-child(2) { transition-delay: 0.1s; }
 .slide-up:nth-child(3) { transition-delay: 0.2s; }
 .slide-up:nth-child(4) { transition-delay: 0.3s; }
 .slide-up:nth-child(5) { transition-delay: 0.4s; }
 
-/* ========================================
-   Navigation
-======================================== */
 .navbar {
     position: fixed;
     top: 0;
@@ -228,7 +325,6 @@ body.hovering-clickable .cursor-glow {
     width: 100%;
 }
 
-/* Hamburger Menu */
 .hamburger {
     display: none;
     cursor: pointer;
@@ -244,9 +340,6 @@ body.hovering-clickable .cursor-glow {
     transition: all var(--transition-fast);
 }
 
-/* ========================================
-   Hero Section
-======================================== */
 .hero {
     min-height: 100vh;
     display: flex;
@@ -294,6 +387,20 @@ body.hovering-clickable .cursor-glow {
     font-weight: 700;
     margin-bottom: 8px;
     line-height: 1.1;
+    position: relative;
+    display: inline-block;
+    cursor: default;
+    padding: 4px 0;
+    background: radial-gradient(
+        circle 45px at var(--name-x, -999px) var(--name-y, -999px),
+        #6366f1 0%,
+        #6366f1 70%,
+        #fffefc 72%,
+        #fffefc 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .title {
@@ -303,7 +410,16 @@ body.hovering-clickable .cursor-glow {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    margin-bottom: 20px;
+    margin-bottom: 6px;
+}
+
+.title-sub {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    margin-bottom: 16px;
+    font-family: var(--font-mono);
+    letter-spacing: 0.05em;
 }
 
 .tagline {
@@ -381,7 +497,6 @@ body.hovering-clickable .cursor-glow {
     background: rgba(99, 102, 241, 0.1);
 }
 
-/* Hero Image */
 .hero-image {
     flex-shrink: 0;
 }
@@ -425,7 +540,6 @@ body.hovering-clickable .cursor-glow {
     to { transform: rotate(360deg); }
 }
 
-/* Scroll Indicator */
 .scroll-indicator {
     position: absolute;
     bottom: 40px;
@@ -462,9 +576,6 @@ body.hovering-clickable .cursor-glow {
     50% { transform: translateY(8px); opacity: 0.3; }
 }
 
-/* ========================================
-   About Section
-======================================== */
 .about {
     background: var(--bg-secondary);
 }
@@ -519,9 +630,6 @@ body.hovering-clickable .cursor-glow {
     margin-top: 4px;
 }
 
-/* ========================================
-   Experience Section
-======================================== */
 .timeline {
     position: relative;
     max-width: 900px;
@@ -627,9 +735,6 @@ body.hovering-clickable .cursor-glow {
     font-weight: 500;
 }
 
-/* ========================================
-   Education Section
-======================================== */
 .education {
     background: var(--bg-secondary);
 }
@@ -689,9 +794,6 @@ body.hovering-clickable .cursor-glow {
     line-height: 1.6;
 }
 
-/* ========================================
-   Projects Section
-======================================== */
 .projects-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -745,9 +847,6 @@ body.hovering-clickable .cursor-glow {
     margin-bottom: 20px;
 }
 
-/* ========================================
-   Skills Section
-======================================== */
 .skills {
     background: var(--bg-secondary);
 }
@@ -847,9 +946,6 @@ body.hovering-clickable .cursor-glow {
     color: var(--accent-primary);
 }
 
-/* ========================================
-   Certifications Section
-======================================== */
 .cert-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -887,9 +983,6 @@ body.hovering-clickable .cursor-glow {
     font-size: 0.85rem;
 }
 
-/* ========================================
-   Workshops Section
-======================================== */
 .workshops {
     background: var(--bg-secondary);
 }
@@ -985,9 +1078,6 @@ body.hovering-clickable .cursor-glow {
     }
 }
 
-/* ========================================
-   Contact Section
-======================================== */
 .contact {
     background: var(--bg-secondary);
 }
@@ -1047,9 +1137,6 @@ body.hovering-clickable .cursor-glow {
     font-weight: 500;
 }
 
-/* ========================================
-   Footer
-======================================== */
 .footer {
     padding: 40px 0;
     text-align: center;
@@ -1061,9 +1148,6 @@ body.hovering-clickable .cursor-glow {
     font-size: 0.9rem;
 }
 
-/* ========================================
-   Responsive Design
-======================================== */
 @media (max-width: 992px) {
     .hero-content {
         flex-direction: column-reverse;
@@ -1189,9 +1273,6 @@ body.hovering-clickable .cursor-glow {
     }
 }
 
-/* ========================================
-   AI Chat Widget - MACK
-======================================== */
 .chat-widget,
 .chat-widget * {
     cursor: auto !important;
