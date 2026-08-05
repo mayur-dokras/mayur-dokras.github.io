@@ -158,8 +158,8 @@ body.hovering-clickable .cursor-glow {
     position: fixed;
     inset: 0;
     z-index: 10000;
-    background: rgba(10, 10, 15, 0.95);
-    backdrop-filter: blur(12px);
+    background: rgba(10, 10, 15, 0.55);
+    backdrop-filter: blur(3px);
     display: flex;
     align-items: center;
     justify-content: center;
