@@ -58,7 +58,7 @@
                 </div>
                 <div class="hero-buttons">
                     <a href="#contact" class="btn btn-primary">Get In Touch</a>
-                    <!-- <a href="Mayur_Dokras_CV.pdf" class="btn btn-secondary" download="Mayur_Dokras_CV.pdf">Download CV</a> -->
+                    <a href="Mayur_Dokras_CV.pdf" class="btn btn-secondary" download="Mayur_Dokras_CV.pdf">Download CV</a>
                 </div>
             </div>
             <div class="hero-image fade-in">
@@ -707,11 +707,28 @@
 
             const isReturning = localStorage.getItem(VISIT_KEY) === 'true';
 
+            // if (isReturning) {
+            //     messageEl.innerHTML = 'Welcome back ! <span class="highlight">Great to see you again.</span><br><br>I hope you find something interesting here...<br><br> (Click on screen to see website)';
+            // } else {
+            //     messageEl.innerHTML = 'Hey, thanks for stopping by! <span class="highlight">Really glad you\'re here.</span><br><br>Take a look around, I would love to connect..!';
+            // }
+
             if (isReturning) {
-                messageEl.innerHTML = 'Welcome back ! <span class="highlight">Great to see you again.</span><br><br>I hope you find something interesting here...';
-            } else {
-                messageEl.innerHTML = 'Hey, thanks for stopping by! <span class="highlight">Really glad you\'re here.</span><br><br>Take a look around, I would love to connect..!';
-            }
+                    messageEl.innerHTML = `Welcome back! <span class="highlight">Great to see you again.</span>
+                                        <br><br>
+                                        I hope you find something interesting here...
+                                        <br><br>
+                                        <span class="welcome-hint">
+                                        <span class="click-icon">☝</span>Click anywhere to enter the website</span>`;
+                            } else {
+                    messageEl.innerHTML = `
+                        Hey, thanks for stopping by! 
+                        <span class="highlight">Really glad you're here.</span>
+                        <br><br>
+                        Take a look around, I would love to connect.
+                        <br><br>
+                        <span class="welcome-hint">Click anywhere to enter the website</span>`;
+                            }
 
             overlay.addEventListener('click', () => {
                 overlay.classList.add('hidden');
