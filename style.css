@@ -665,6 +665,8 @@ body.hovering-clickable .cursor-glow {
 .about-content {
     max-width: 800px;
     margin: 0 auto;
+    text-align: justify;
+    text-justify: inter-word;
 }
 
 .about-text .lead {
@@ -672,12 +674,16 @@ body.hovering-clickable .cursor-glow {
     color: var(--text-primary);
     margin-bottom: 20px;
     line-height: 1.8;
+    text-align: justify;
+    text-justify: inter-word;
 }
 
 .about-text p {
     color: var(--text-secondary);
     margin-bottom: 16px;
     line-height: 1.8;
+    text-align: justify;
+    text-justify: inter-word;
 }
 
 .about-highlights {
