@@ -492,6 +492,36 @@ body.hovering-clickable .cursor-glow {
     flex-wrap: wrap;
 }
 
+/* Added for testing  */
+.hero-linkedin {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 20px;
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: color var(--transition-fast), transform var(--transition-fast);
+}
+
+.hero-linkedin:hover {
+    color: var(--accent-secondary);
+    transform: translateX(3px);
+}
+
+.hero-linkedin svg {
+    flex-shrink: 0;
+}
+
+.hero-linkedin .external-arrow {
+    transition: transform var(--transition-fast);
+}
+
+.hero-linkedin:hover .external-arrow {
+    transform: translate(2px, -2px);
+}
+/* till here  */
 .btn {
     padding: 14px 32px;
     border-radius: 12px;
