@@ -939,6 +939,8 @@ body.hovering-clickable .cursor-glow {
     font-size: 0.95rem;
     line-height: 1.6;
     margin-bottom: 20px;
+    text-align: justify;
+    text-justify: inter-word;
 }
 
 .skills {
@@ -1164,6 +1166,8 @@ body.hovering-clickable .cursor-glow {
     font-size: 0.95rem;
     line-height: 1.7;
     margin-bottom: 20px;
+    text-align: justify;
+    text-justify: inter-word;
 }
 
 @media (max-width: 768px) {
