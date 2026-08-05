@@ -669,6 +669,12 @@ body.hovering-clickable .cursor-glow {
     text-justify: inter-word;
 }
 
+@media (max-width: 768px) {
+    .about-content {
+        text-align: left;
+    }
+}
+
 .about-text .lead {
     font-size: 1.25rem;
     color: var(--text-primary);
