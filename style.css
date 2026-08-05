@@ -493,11 +493,13 @@ body.hovering-clickable .cursor-glow {
 }
 
 /* Added for testing  */
-.hero-linkedin {
+.hero-linkedin,
+.hero-linkedin:link,
+.hero-linkedin:visited {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    margin-top: 20px;
+    margin-top: 18px;
     color: var(--text-secondary);
     text-decoration: none;
     font-size: 0.95rem;
@@ -505,13 +507,17 @@ body.hovering-clickable .cursor-glow {
     transition: color var(--transition-fast), transform var(--transition-fast);
 }
 
-.hero-linkedin:hover {
+.hero-linkedin:hover,
+.hero-linkedin:focus {
     color: var(--accent-secondary);
+    text-decoration: none;
     transform: translateX(3px);
 }
 
 .hero-linkedin svg {
+    display: block;
     flex-shrink: 0;
+    color: currentColor;
 }
 
 .hero-linkedin .external-arrow {
@@ -522,6 +528,7 @@ body.hovering-clickable .cursor-glow {
     transform: translate(2px, -2px);
 }
 /* till here  */
+
 .btn {
     padding: 14px 32px;
     border-radius: 12px;
