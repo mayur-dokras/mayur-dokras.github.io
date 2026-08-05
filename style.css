@@ -493,40 +493,54 @@ body.hovering-clickable .cursor-glow {
 }
 
 /* Added for testing  */
-.hero-linkedin,
-.hero-linkedin:link,
-.hero-linkedin:visited {
+.hero-links {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+.hero-link,
+.hero-link:link,
+.hero-link:visited {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    margin-top: 18px;
     color: var(--text-secondary);
     text-decoration: none;
     font-size: 0.95rem;
     font-weight: 500;
-    transition: color var(--transition-fast), transform var(--transition-fast);
+    transition: color var(--transition-fast),
+                transform var(--transition-fast);
 }
 
-.hero-linkedin:hover,
-.hero-linkedin:focus {
+.hero-link:hover,
+.hero-link:focus {
     color: var(--accent-secondary);
     text-decoration: none;
-    transform: translateX(3px);
+    transform: translateY(-1px);
 }
 
-.hero-linkedin svg {
+.hero-link svg {
     display: block;
     flex-shrink: 0;
     color: currentColor;
 }
 
-.hero-linkedin .external-arrow {
+.hero-link .external-arrow {
     transition: transform var(--transition-fast);
 }
 
-.hero-linkedin:hover .external-arrow {
+.hero-link:hover .external-arrow {
     transform: translate(2px, -2px);
 }
+
+.hero-divider {
+    color: rgba(255, 255, 255, 0.25);
+    font-size: 1rem;
+}
+
 /* till here  */
 
 .btn {
