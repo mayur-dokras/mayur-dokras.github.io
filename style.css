@@ -493,52 +493,54 @@ body.hovering-clickable .cursor-glow {
 }
 
 /* Added for testing  */
-.hero-links {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    margin-top: 20px;
-    flex-wrap: wrap;
+.hero-links{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    margin-top:20px;
+    flex-wrap:wrap;
 }
 
-.hero-link,
-.hero-link:link,
-.hero-link:visited {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    color: var(--text-secondary);
-    text-decoration: none;
-    font-size: 0.95rem;
-    font-weight: 500;
-    transition: color var(--transition-fast),
-                transform var(--transition-fast);
+.hero-links .hero-link{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+
+    color:var(--text-secondary) !important;
+    text-decoration:none !important;
+
+    font-size:0.95rem;
+    font-weight:500;
+
+    transition:all .25s ease;
 }
 
-.hero-link:hover,
-.hero-link:focus {
-    color: var(--accent-secondary);
-    text-decoration: none;
-    transform: translateY(-1px);
+.hero-links .hero-link:visited{
+    color:var(--text-secondary) !important;
 }
 
-.hero-link svg {
-    display: block;
-    flex-shrink: 0;
-    color: currentColor;
+.hero-links .hero-link:hover{
+    color:var(--accent-secondary) !important;
+    text-decoration:none !important;
+    transform:translateY(-2px);
 }
 
-.hero-link .external-arrow {
-    transition: transform var(--transition-fast);
+.hero-links .hero-link svg{
+    color:currentColor;
+    flex-shrink:0;
 }
 
-.hero-link:hover .external-arrow {
-    transform: translate(2px, -2px);
+.hero-links .external-arrow{
+    transition:.25s;
 }
 
-.hero-divider {
-    color: rgba(255, 255, 255, 0.25);
-    font-size: 1rem;
+.hero-links .hero-link:hover .external-arrow{
+    transform:translate(2px,-2px);
+}
+
+.hero-divider{
+    color:rgba(255,255,255,.35);
+    font-size:18px;
 }
 
 /* till here  */
