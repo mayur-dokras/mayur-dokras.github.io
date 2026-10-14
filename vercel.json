@@ -1,3 +1,6 @@
 {
-  "version": 2
+  "version": 2,
+  "functions": {
+    "api/chat.js": { "maxDuration": 30, "includeFiles": "api/_data/**" }
+  }
 }

@@ -1,0 +1,14 @@
+{
+  "kb": "882b9fcc4235",
+  "builtAt": "2026-10-14T12:24:58.075Z",
+  "evaluatedAt": "2026-10-14T12:24:58.149Z",
+  "retrieval": {
+    "mode": "bm25",
+    "hit1": 0.824,
+    "hit3": 1,
+    "mrr": 0.902,
+    "cases": 17
+  },
+  "chunks": 27,
+  "github": 0
+}

@@ -1,5 +1,12 @@
 {
   "name": "mayur-dokras-portfolio",
-  "version": "1.0.0",
-  "description": "Portfolio website with AI chat - GitHub Pages + Vercel API"
+  "version": "2.0.0",
+  "description": "Portfolio website with MACK, a RAG-powered AI career assistant - GitHub Pages + Vercel API",
+  "private": true,
+  "engines": { "node": ">=18" },
+  "scripts": {
+    "kb": "node scripts/build-kb.js",
+    "eval": "node scripts/eval.js",
+    "eval:live": "node scripts/eval.js --live"
+  }
 }
