@@ -3,1085 +3,586 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mayur Dokras | Software Engineer</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Mayur Dokras · GenAI & Backend Engineer</title>
+    <meta name="description" content="Mayur Dokras, GenAI Engineer and Backend Engineer. LLMs, RAG, LoRA fine-tuning, small language models and production-grade Python backends.">
+    <meta name="theme-color" content="#05060a">
+    <meta property="og:title" content="Mayur Dokras · GenAI & Backend Engineer">
+    <meta property="og:description" content="I build AI that thinks, on backends that never sleep.">
+    <meta property="og:image" content="https://mayur-dokras.github.io/profile.jpg">
+    <meta property="og:url" content="https://mayur-dokras.github.io/">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='16' fill='%2305060a'/><text x='50%25' y='56%25' text-anchor='middle' dominant-baseline='middle' font-family='monospace' font-weight='700' font-size='26' fill='%2322d3ee'>MD</text></svg>">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <div class="cursor-bg-shine-wrap">
-        <div class="cursor-bg-shine" id="cursorBgShine" aria-hidden="true"></div>
-        <div class="cursor-bg-shine-parallax" id="cursorBgShineParallax" aria-hidden="true"></div>
-    </div>
-    <div class="cursor-dot" id="cursorDot">&lt;/&gt;</div>
-    <div class="cursor-glow" id="cursorGlow"></div>
+<body class="is-booting">
 
-    <div class="welcome-overlay" id="welcomeOverlay" aria-live="polite">
-        <div class="welcome-overlay-content">
-            <p class="welcome-message" id="welcomeMessage"></p>
+    <!-- ============ BOOT SEQUENCE ============ -->
+    <div class="boot" id="boot" aria-hidden="true">
+        <div class="boot-inner">
+            <div class="boot-logo">MD<span>.ai</span></div>
+            <pre class="boot-log" id="bootLog"></pre>
+            <div class="boot-bar"><span id="bootBar"></span></div>
+            <div class="boot-meta"><span id="bootPct">0%</span><span>click to skip</span></div>
         </div>
+        <div class="boot-shutter top"></div>
+        <div class="boot-shutter bottom"></div>
     </div>
 
-    <nav class="navbar">
-        <div class="nav-container">
-            <a href="#home" class="nav-logo">MD</a>
-            <ul class="nav-menu">
-                <li><a href="#home" class="nav-link">Home</a></li>
-                <li><a href="#about" class="nav-link">About</a></li>
-                <li><a href="#experience" class="nav-link">Experience</a></li>
-                <li><a href="#projects" class="nav-link">Projects</a></li>
-                <li><a href="#skills" class="nav-link">Skills</a></li>
-                <li><a href="#workshops" class="nav-link">Workshops</a></li>
-                <li><a href="#contact" class="nav-link">Contact</a></li>
-            </ul>
-            <div class="hamburger">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </div>
-        </div>
-    </nav>
+    <!-- ============ AMBIENT LAYERS ============ -->
+    <div class="grain" aria-hidden="true"></div>
+    <div class="grid-bg" aria-hidden="true"></div>
+    <div class="aurora" aria-hidden="true"><span></span><span></span><span></span></div>
+    <div class="scroll-progress" id="scrollProgress"></div>
+    <div class="cursor-dot" id="cursorDot"></div>
+    <div class="cursor-ring" id="cursorRing"></div>
 
+    <!-- ============ NAV ============ -->
+    <header class="nav" id="nav">
+        <a href="#home" class="nav-logo magnetic" aria-label="Home">MD<span>.ai</span></a>
+        <nav class="nav-pill" aria-label="Primary">
+            <a href="#about" class="nav-link">About</a>
+            <a href="#stack" class="nav-link">Stack</a>
+            <a href="#experience" class="nav-link">Experience</a>
+            <a href="#projects" class="nav-link">Projects</a>
+            <a href="#contact" class="nav-link">Contact</a>
+        </nav>
+        <button class="nav-cmd magnetic" id="cmdOpen" aria-label="Open command palette"><kbd>⌘</kbd><kbd>K</kbd></button>
+        <a href="mailto:mayurdokras@gmail.com" class="nav-mail magnetic" aria-label="Email Mayur">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="m22 7-10 6L2 7"/></svg>
+        </a>
+    </header>
+
+    <main>
+    <!-- ============ HERO ============ -->
     <section id="home" class="hero">
-        <div class="hero-bg"></div>
+        <canvas id="neural" class="hero-canvas" aria-hidden="true"></canvas>
+        <div class="hero-vignette" aria-hidden="true"></div>
+
+        <div class="hero-hud hud-tl" aria-hidden="true">
+            <span>LAT 18.52°N · LON 73.85°E</span>
+            <span>NODE: PUNE → GLOBAL</span>
+        </div>
+        <div class="hero-hud hud-tr" aria-hidden="true">
+            <span>MODEL <b id="hudModel">mayur-v4</b></span>
+            <span>TOK/S <b id="hudTok">0</b></span>
+        </div>
+
         <div class="hero-content">
-            <div class="hero-text fade-in">
-                <p class="greeting">Hello, I'm</p>
-                <h1 class="name" id="heroName">Mayur Dokras</h1>
-                <h2 class="title">Software Engineer</h2>
-                <p class="title-sub">Backend • AI • Data Engineering</p>
-                <p class="tagline">Building scalable backend systems, AI-powered applications and secure APIs with 4+ years of industry experience.</p>
-                <div class="availability-badge">
-                    <span class="status-dot"></span>
-                    <span>Open to UK & EU opportunities</span>
-                </div>
-                <div class="hero-buttons">
-                    <a href="#contact" class="btn btn-primary">Get In Touch</a>
-                    <a href="Mayur_Dokras_CV.pdf" class="btn btn-secondary" download="Mayur_Dokras_CV.pdf">Download CV</a>
-                </div>
-                    <!-- Added for testing the reviews  -->
-                        <div class="hero-links">
-                        
-                            <a href="https://www.linkedin.com/in/mayur-dokras-92ab67146"
-                               class="hero-link"
-                               target="_blank"
-                               rel="noopener noreferrer">
-                        
-                                <svg xmlns="http://www.w3.org/2000/svg"
-                                     width="18"
-                                     height="18"
-                                     viewBox="0 0 24 24"
-                                     fill="none"
-                                     stroke="currentColor"
-                                     stroke-width="2"
-                                     stroke-linecap="round"
-                                     stroke-linejoin="round">
-                                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-                                    <rect x="2" y="9" width="4" height="12"></rect>
-                                    <circle cx="4" cy="4" r="2"></circle>
-                                </svg>
-                        
-                                <span>LinkedIn Profile</span>
-                        
-                                <svg class="external-arrow"
-                                     xmlns="http://www.w3.org/2000/svg"
-                                     width="15"
-                                     height="15"
-                                     viewBox="0 0 24 24"
-                                     fill="none"
-                                     stroke="currentColor"
-                                     stroke-width="2"
-                                     stroke-linecap="round"
-                                     stroke-linejoin="round">
-                                    <path d="M7 17L17 7"></path>
-                                    <path d="M7 7h10v10"></path>
-                                </svg>
-                            </a>
-                        
-                            <span class="hero-divider">|</span>
-                        
-                            <a href="mailto:mayurdokras@gmail.com"
-                               class="hero-link">
-                        
-                                <svg xmlns="http://www.w3.org/2000/svg"
-                                     width="18"
-                                     height="18"
-                                     viewBox="0 0 24 24"
-                                     fill="none"
-                                     stroke="currentColor"
-                                     stroke-width="2"
-                                     stroke-linecap="round"
-                                     stroke-linejoin="round">
-                                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                                    <polyline points="22,6 12,13 2,6"></polyline>
-                                </svg>
-                        
-                                <span>Email Me</span>
-                            </a>
-                        
-                        </div>
+            <div class="hero-hello reveal-hero">
+                <span>Hello</span>
+                <img src="profile.jpg" alt="Mayur Dokras" class="hello-avatar">
+                <span>I'm <b>Mayur Dokras</b></span>
+                <span class="hello-sep"></span>
+                <span class="live-dot"></span><span class="hello-live">Open to work</span>
             </div>
-            <div class="hero-image fade-in">
-                <div class="profile-wrapper">
-                    <img src="profile.png" alt="Mayur Dokras" class="profile-img">
-                    <div class="profile-ring"></div>
-                </div>
+
+            <h1 class="hero-title">
+                <span class="line"><span class="word">I</span> <span class="word">build</span> <span class="word">AI</span> <span class="word">that</span> <em class="word serif grad">thinks,</em></span>
+                <span class="line"><span class="word">on</span> <span class="word">backends</span> <span class="word">that</span></span>
+                <span class="line"><em class="word serif grad-2">never</em> <span class="word">sleep.</span></span>
+            </h1>
+
+            <div class="hero-role reveal-hero">
+                <span class="prompt">~/mayur $</span>
+                <span class="role-text" id="roleText">GenAI Engineer</span><span class="caret"></span>
+            </div>
+
+            <p class="hero-sub reveal-hero">
+                I ship <b>LLM features</b>, <b>RAG pipelines</b>, <b>LoRA fine-tuned models</b> and <b>small language models</b>
+                on <b>Python</b> backends, with 4+ years at Capgemini, a UK cyber-security startup and in FinTech.
+            </p>
+
+            <div class="hero-cta reveal-hero">
+                <button class="btn btn-glow magnetic" data-open-chat>
+                    <span class="btn-spark">✦</span> Talk to my AI
+                </button>
+                <a href="Mayur_Dokras_CV.pdf" class="btn btn-ghost magnetic" download="Mayur_Dokras_CV.pdf">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>
+                    Download CV
+                </a>
+                <a href="https://www.linkedin.com/in/mayur-dokras-92ab67146" target="_blank" rel="noopener noreferrer" class="btn btn-icon magnetic" aria-label="LinkedIn">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
+                </a>
             </div>
         </div>
-        <div class="scroll-indicator">
-            <div class="mouse">
-                <div class="wheel"></div>
-            </div>
-            <span>Scroll Down</span>
+
+        <!-- physics pills -->
+        <div class="pit" id="pit" aria-label="Things I do">
+            <span class="pill p-lime"   data-pill>RAG PIPELINES <i>⌘</i></span>
+            <span class="pill p-violet" data-pill>FINE-TUNING · LORA <i>◈</i></span>
+            <span class="pill p-cyan"   data-pill>FASTAPI <i>⚡</i></span>
+            <span class="pill p-orange" data-pill>SHIPPING LLMS <i>↗</i></span>
+            <span class="pill p-pink"   data-pill>VECTOR SEARCH <i>◎</i></span>
+            <span class="pill p-dot p-amber" data-pill>✦</span>
+            <span class="pill p-emerald" data-pill>MLOPS <i>∞</i></span>
+            <span class="pill p-ghost"  data-pill>PROMPT ENGINEERING <i>✎</i></span>
+            <span class="pill p-dot p-cyan" data-pill>{ }</span>
+            <span class="pill p-amber"  data-pill>SCALING APIS <i>⇡</i></span>
+            <span class="pill p-violet" data-pill>AGENTS <i>⟁</i></span>
+            <span class="pill p-dot p-pink" data-pill>⌁</span>
+            <span class="pill p-lime"   data-pill>KAFKA &amp; QUEUES <i>⇄</i></span>
+            <span class="pill p-cyan"   data-pill>SMALL LANGUAGE MODELS <i>◐</i></span>
+            <span class="pill p-dot p-emerald" data-pill>◉</span>
+            <span class="pill p-orange" data-pill>KUBERNETES <i>☸</i></span>
         </div>
+        <div class="pit-hint" aria-hidden="true">↑ drag &amp; throw them</div>
     </section>
 
-    <section id="about" class="about section">
+    <!-- ============ MARQUEE BAND ============ -->
+    <div class="band" aria-hidden="true">
+        <div class="band-track">
+            <span>GENAI ENGINEER</span><b>✦</b><span>BACKEND ENGINEER</span><b>✦</b><span>MLOPS</span><b>✦</b><span>RAG</span><b>✦</b><span>LLM FINE-TUNING</span><b>✦</b><span>DISTRIBUTED SYSTEMS</span><b>✦</b><span>VOICE AI</span><b>✦</b>
+            <span>GENAI ENGINEER</span><b>✦</b><span>BACKEND ENGINEER</span><b>✦</b><span>MLOPS</span><b>✦</b><span>RAG</span><b>✦</b><span>LLM FINE-TUNING</span><b>✦</b><span>DISTRIBUTED SYSTEMS</span><b>✦</b><span>VOICE AI</span><b>✦</b>
+        </div>
+    </div>
+
+    <!-- ============ ABOUT ============ -->
+    <section id="about" class="section">
         <div class="container">
-            <h2 class="section-title slide-up">About Me</h2>
-            <div class="about-content">
-                <div class="about-text slide-up">
-                    <p class="lead">Software Engineer with 4+ years of industry experience, currently pursuing an MSc in Software Engineering at the <strong>University of Southampton</strong>, building scalable backend systems, AI-powered applications and production-ready software.</p>
-                    <p>I’m passionate about solving real engineering problems through clean, reliable and scalable software. My experience spans backend development using Python, Java, Spring Boot, FastAPI, REST APIs and SQL, along with C/C++ for telecom software. I’ve built automation tools, integrated secure UK Government APIs, developed production features, and supported large-scale software deployments serving broadband, Wi-Fi, TV and telecom networks.</p>
-                    <p>More recently, I’ve been focused on AI and LLM-powered applications, combining backend engineering with practical AI solutions. I’m currently building my own AI platform while exploring agentic workflows, cloud technologies and modern software architecture. I enjoy working with cross-functional and international teams, continuously learning new technologies and building products that make a real impact.</p>
-                    <div class="about-highlights">
-                        <div class="highlight-item">
-                            <span class="highlight-number">4</span>
-                            <span class="highlight-text">Years Experience</span>
-                        </div>
-                        <div class="highlight-item">
-                            <span class="highlight-number">15+</span>
-                            <span class="highlight-text">Features Delivered</span>
-                        </div>
-                        <div class="highlight-item">
-                            <span class="highlight-number">40+</span>
-                            <span class="highlight-text">Bugs Resolved</span>
-                        </div>
+            <div class="sec-head reveal">
+                <span class="sec-idx">01 / ABOUT</span>
+                <h2 class="sec-title">Backend roots.<br><em class="serif grad">GenAI</em> focus.</h2>
+            </div>
+
+            <div class="about-grid">
+                <div class="about-copy reveal">
+                    <p class="lead">I'm a <b>GenAI &amp; Backend Engineer</b> with an <b>MSc in Software Engineering from the University of Southampton</b>. I build AI products end to end: data pipelines, vector stores, fine-tuned models and the secure APIs that serve them.</p>
+                    <p>At <b>Capgemini Engineering</b> I spent three years as a Software Engineer working on Python tool development, debugging and production support. I built automation tools, traced root causes with GDB and Wireshark, and helped cut MTTR by 25%. At <b>Malvox</b>, a UK cyber-security startup, I built backend services on Kubernetes that integrated UK Government APIs with OAuth2 and AES-256.</p>
+                    <p>Today I build AI end to end: a <b>campus assistant fine-tuned with LoRA</b> that most of my MSc class tried in its test batch, an <b>AI engineering platform</b> on RAG and Chroma, and a <b>small language model with voice</b> for web and Android, still in development.</p>
+                    <div class="about-badges">
+                        <span class="chip-badge"><span class="live-dot"></span> Immediate joiner</span>
+                        <span class="chip-badge">Pune, India · open to UK, EU and global roles</span>
+                        <span class="chip-badge">MSc, University of Southampton</span>
                     </div>
                 </div>
+
+                <div class="terminal reveal" id="terminal">
+                    <div class="term-bar">
+                        <i></i><i></i><i></i>
+                        <span>mack@mayur-dokras: ~/api</span>
+                    </div>
+                    <pre class="term-body" id="termBody"></pre>
+                </div>
+            </div>
+
+            <!-- stats bento -->
+            <div class="bento">
+                <div class="bento-card b-wide reveal spot">
+                    <span class="b-label">Industry experience</span>
+                    <div class="b-num"><span data-count="4">0</span><sup>+ yrs</sup></div>
+                    <p>Telecom, cyber-security and FinTech, using Python, C/C++, Java and cloud.</p>
+                </div>
+                <div class="bento-card reveal spot">
+                    <span class="b-label">SotonBuddy test batch</span>
+                    <div class="b-num"><span data-count="68">0</span><sup>/83</sup></div>
+                    <p>MSc classmates tried my fine-tuned campus AI.</p>
+                </div>
+                <div class="bento-card reveal spot">
+                    <span class="b-label">MTTR reduced</span>
+                    <div class="b-num"><span data-count="25">0</span><sup>%</sup></div>
+                    <p>Through root-cause tooling &amp; automation.</p>
+                </div>
+                <div class="bento-card reveal spot">
+                    <span class="b-label">Production defects fixed</span>
+                    <div class="b-num"><span data-count="40">0</span><sup>+</sup></div>
+                    <p>Across global client environments.</p>
+                </div>
+                <div class="bento-card reveal spot">
+                    <span class="b-label">UK Gov APIs integrated</span>
+                    <div class="b-num"><span data-count="3">0</span></div>
+                    <p>Secured with OAuth2, TLS &amp; AES-256.</p>
+                </div>
+                <div class="bento-card b-wide b-graph reveal spot">
+                    <span class="b-label">Demo telemetry · simulated inference p95</span>
+                    <canvas id="spark" height="90"></canvas>
+                    <div class="b-graph-meta"><span>p95 <b id="p95">142ms</b></span><span>model <b>slm-voice</b></span><span>status <b class="ok">● streaming</b></span></div>
+                </div>
             </div>
         </div>
     </section>
 
-    <section id="experience" class="experience section">
+    <!-- ============ STACK / ARCHITECTURE ============ -->
+    <section id="stack" class="section">
         <div class="container">
-            <h2 class="section-title slide-up">Work Experience</h2>
-            <div class="timeline">
-                <div class="timeline-item slide-up">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-header">
-                            <h3>Backend Developer - Part-Time Volunteer</h3>
-                            <span class="company">Malvox, University of Southampton</span>
-                            <span class="date">Feb 2025 - Jul 2025</span>
+            <div class="sec-head reveal">
+                <span class="sec-idx">02 / HOW I SHIP AI</span>
+                <h2 class="sec-title">From raw data to a model<br>in <em class="serif grad-2">production.</em></h2>
+                <p class="sec-sub">The pipeline I design end to end. I have built, deployed or debugged every stage of it.</p>
+            </div>
+
+            <div class="pipeline reveal">
+                <div class="pipe-node" style="--c:var(--cyan)">
+                    <span class="pn-step">01</span>
+                    <div class="pn-ic">⇣</div>
+                    <h4>Ingest</h4>
+                    <p>Airflow · Kafka · SQL</p>
+                </div>
+                <div class="pipe-link"></div>
+                <div class="pipe-node" style="--c:var(--lime)">
+                    <span class="pn-step">02</span>
+                    <div class="pn-ic">⌬</div>
+                    <h4>Embed</h4>
+                    <p>Chunking · Embeddings</p>
+                </div>
+                <div class="pipe-link"></div>
+                <div class="pipe-node" style="--c:var(--violet)">
+                    <span class="pn-step">03</span>
+                    <div class="pn-ic">◎</div>
+                    <h4>Retrieve</h4>
+                    <p>Chroma vector store</p>
+                </div>
+                <div class="pipe-link"></div>
+                <div class="pipe-node core" style="--c:var(--pink)">
+                    <span class="pn-step">04</span>
+                    <div class="pn-ic">✦</div>
+                    <h4>Reason</h4>
+                    <p>LLM / SLM · LoRA</p>
+                </div>
+                <div class="pipe-link"></div>
+                <div class="pipe-node" style="--c:var(--amber)">
+                    <span class="pn-step">05</span>
+                    <div class="pn-ic">⚡</div>
+                    <h4>Serve</h4>
+                    <p>FastAPI · OAuth2</p>
+                </div>
+                <div class="pipe-link"></div>
+                <div class="pipe-node" style="--c:var(--emerald)">
+                    <span class="pn-step">06</span>
+                    <div class="pn-ic">☸</div>
+                    <h4>Operate</h4>
+                    <p>Docker · K8s · CI/CD</p>
+                </div>
+            </div>
+
+            <div class="stack-rows">
+                <div class="stack-row reveal">
+                    <span class="stack-label">GenAI</span>
+                    <div class="marquee"><div class="marquee-track">
+                        <span>LLMs</span><span>RAG</span><span>LoRA Fine-tuning</span><span>Hugging Face</span><span>PyTorch</span><span>OpenAI API</span><span>Gemini API</span><span>Prompt Engineering</span><span>Chroma</span><span>Embeddings</span><span>Agentic Workflows</span><span>Small Language Models</span><span>Voice AI</span>
+                    </div></div>
+                </div>
+                <div class="stack-row reveal">
+                    <span class="stack-label">Backend</span>
+                    <div class="marquee reverse"><div class="marquee-track">
+                        <span>Python</span><span>FastAPI</span><span>Java</span><span>Spring Boot</span><span>REST · OpenAPI</span><span>OAuth2</span><span>PostgreSQL</span><span>MySQL</span><span>MongoDB</span><span>Snowflake</span><span>Kafka</span><span>RabbitMQ</span><span>Airflow</span><span>SQL</span>
+                    </div></div>
+                </div>
+                <div class="stack-row reveal">
+                    <span class="stack-label">Infra</span>
+                    <div class="marquee"><div class="marquee-track">
+                        <span>Docker</span><span>Kubernetes</span><span>AWS</span><span>Vercel</span><span>Jenkins</span><span>GitHub CI/CD</span><span>Linux</span><span>Bash</span><span>Git</span><span>GDB</span><span>Wireshark</span><span>Postman</span>
+                    </div></div>
+                </div>
+                <div class="stack-row reveal">
+                    <span class="stack-label">Also</span>
+                    <div class="marquee reverse"><div class="marquee-track">
+                        <span>C / C++</span><span>Kotlin</span><span>Jetpack Compose</span><span>Swift</span><span>Flutter</span><span>Dart</span><span>React</span><span>Next.js</span><span>Firebase</span><span>JavaScript</span>
+                    </div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ EXPERIENCE ============ -->
+    <section id="experience" class="section">
+        <div class="container">
+            <div class="sec-head reveal">
+                <span class="sec-idx">03 / EXPERIENCE</span>
+                <h2 class="sec-title">Where I've <em class="serif grad">shipped.</em></h2>
+            </div>
+
+            <div class="timeline" id="timeline">
+                <div class="tl-rail"><span id="tlFill"></span></div>
+
+                <article class="tl-item reveal">
+                    <div class="tl-node"></div>
+                    <div class="tl-card spot">
+                        <div class="tl-top">
+                            <span class="tl-date">Feb 2025 - Jul 2025</span>
+                            <span class="tl-kind">Part-time · UK</span>
                         </div>
-                        <ul class="timeline-details">
-                             <li>Integrated 3 UK Government APIs using Python, SQL and REST APIs for secure backend workflows.</li>
-                             <li>Designed relational data models and secure data flows using OAuth2, HTTPS/TLS and AES-256 encryption.</li>
-                             <li>Debugged API, authentication, database and integration issues across real-time workflows.</li>
-                             <li>Delivered backend functionality through Agile development using Git and CI/CD practices.</li>
-                            <!-- <li>Integrated RESTful APIs for UK Gov. data consumption with GDPR compliance</li>
-                            <li>Designed secure backend architecture and implemented data pipelines for Malvox.com</li>
-                            <li>Implemented authentication, authorization, rate limiting, and encryption protocols</li>
-                            <li>Developed browser plugin and maintained CI/CD pipeline for continuous delivery</li> -->
+                        <h3>Backend Engineer</h3>
+                        <p class="tl-co">Malvox · Cyber-security startup, University of Southampton</p>
+                        <ul>
+                            <li>Integrated <b>3 UK Government APIs</b> with Python, SQL and REST for secure backend workflows.</li>
+                            <li>Designed relational models and secure data flows with <b>OAuth2, HTTPS/TLS and AES-256</b>.</li>
+                            <li>Services deployed on <b>Kubernetes</b>; debugged API, auth, database and integration issues in real-time flows.</li>
+                            <li>Worked alongside PhD researchers in an international team, delivering through Agile, Git and CI/CD.</li>
                         </ul>
-                        <div class="tech-tags">
-                            <span class="tag">RESTful APIs</span>
-                            <span class="tag">GDPR</span>
-                            <span class="tag">Git</span>
-                            <span class="tag">CI/CD</span>
-                            <span class="tag">Security</span>
-                            <span class="tag">OAuth2</span>
-                        </div>
+                        <div class="tags"><span>Python</span><span>REST</span><span>Kubernetes</span><span>OAuth2</span><span>GDPR</span><span>CI/CD</span></div>
                     </div>
-                </div>
+                </article>
 
-                <div class="timeline-item slide-up">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-header">
-                            <h3>Associate II - Software Engineer</h3>
-                            <span class="company">Capgemini Engineering</span>
-                            <span class="date">Nov 2021 - Nov 2024</span>
+                <article class="tl-item reveal">
+                    <div class="tl-node"></div>
+                    <div class="tl-card spot">
+                        <div class="tl-top">
+                            <span class="tl-date">Nov 2021 - Nov 2024</span>
+                            <span class="tl-kind">Full-time · India</span>
                         </div>
-                        <ul class="timeline-details">
-                           <li>Developed 5 Python automation tools for debugging, log analysis and operational workflows, reducing manual engineering effort.</li>
-                            <li>Developed and supported production critical GPON software and CCM/CFM protocol components using Python, C/C++ and Linux.</li>
-                            <li>Performed hands-on debugging and root-cause analysis using GDB, Wireshark and system logs, contributing to a 25% reduction in MTTR.</li>
-                            <li>Delivered 7+ production features and resolved 40+ production defects across global client environments.</li>
-                            <li>Collaborated with the R&D team on client-proposed IoT and smart-home automation solutions, contributing as an Android Developer and Researcher.</li>
-                            <li>Coordinated 4–5 engineers across development, debugging, code reviews and release activities.</li>
-                            <!-- <li>Developed 15+ client-side features and resolved 40+ production defects using Python</li>
-                            <li>Worked on GPON technology with C/C++ and Linux system administration</li>
-                            <li>Improved system performance by 25% through CFM and CCM protocol optimization</li>
-                            <li>Collaborated with R&D team to develop client-proposed IoT solutions for smart home automation, serving as Android Developer and Researcher</li>
-                            <li>Reduced mean time to resolution (MTTR) by 25%</li> -->
-                    
+                        <h3>Software Engineer</h3>
+                        <p class="tl-co">Capgemini Engineering · Python tools, debugging &amp; production support</p>
+                        <ul>
+                            <li>Built <b>5 Python automation tools</b> for debugging, log analysis and operational workflows.</li>
+                            <li>Debugged and supported production systems on Linux, working across Python and C/C++ code.</li>
+                            <li>Root-cause analysis with GDB, Wireshark and system logs, contributing to a <b>25% reduction in MTTR</b>.</li>
+                            <li>Production support: resolved <b>40+ production defects</b> and delivered <b>7+ features</b> for global clients.</li>
+                            <li>Coordinated 4 to 5 engineers across debugging, code reviews and releases.</li>
                         </ul>
-                        <div class="tech-tags">
-                            <span class="tag">Python</span>
-                            <span class="tag">C/C++</span>
-                            <span class="tag">Linux</span>
-                            <span class="tag">Automation</span>
-                            <span class="tag">CCM/CFM</span>
-                            <span class="tag">Jenkins</span>
-                            <span class="tag">CI/CD</span>
-                            <span class="tag">GitHub</span>
-                        </div>
+                        <div class="tags"><span>Python</span><span>C/C++</span><span>Linux</span><span>Automation</span><span>Jenkins</span><span>CI/CD</span></div>
                     </div>
-                </div>
+                </article>
 
-                <div class="timeline-item slide-up">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-header">
-                            <h3>Freelance Software & Mobile Developer</h3>
-                            <span class="company">FinTech Startup Client – Australia (Remote)</span>
-                            <span class="date">Feb 2021 - Oct 2021</span>
+                <article class="tl-item reveal">
+                    <div class="tl-node"></div>
+                    <div class="tl-card spot">
+                        <div class="tl-top">
+                            <span class="tl-date">Feb 2021 - Oct 2021</span>
+                            <span class="tl-kind">Freelance · Remote</span>
                         </div>
-                        <ul class="timeline-details">
-                            <li>Designed and delivered a cross-platform FinTech application using Flutter and Firebase.</li>
-                            <li>Built frontend, backend and API-connected application workflows.</li>
-                            <li>Integrated PayPal and Razorpay APIs for multi-currency payment processing.</li>
-                            <li>Implemented authentication, real-time data synchronization and secure transaction workflows.</li>
-                            <!-- <li>Designed and developed native and cross-platform mobile applications</li>
-                            <li>Built e-commerce, grocery delivery, and fitness applications</li>
-                            <li>Implemented secure authentication mechanisms (JWT/OAuth2)</li>
-                            <li>Managed full software development lifecycle from requirements to production</li> -->
+                        <h3>Software &amp; Mobile Developer</h3>
+                        <p class="tl-co">FinTech startup client · Australia</p>
+                        <ul>
+                            <li>Designed and shipped a cross-platform FinTech app with Flutter and Firebase.</li>
+                            <li>Integrated <b>PayPal &amp; Razorpay</b> for multi-currency payments.</li>
+                            <li>Built auth, real-time sync and secure transaction workflows end-to-end.</li>
                         </ul>
-                        <div class="tech-tags">
-                            <span class="tag">Flutter</span>
-                            <span class="tag">Dart</span>
-                            <span class="tag">REST APIs</span>
-                            <span class="tag">FinTech</span>
-                            <span class="tag">Payments</span>
-                            <span class="tag">Firebase</span>
-                        </div>
+                        <div class="tags"><span>Flutter</span><span>Firebase</span><span>Payments</span><span>REST</span></div>
                     </div>
-                </div>
+                </article>
             </div>
         </div>
     </section>
 
-    <section id="education" class="education section">
+    <!-- ============ PROJECTS ============ -->
+    <section id="projects" class="section">
         <div class="container">
-            <h2 class="section-title slide-up">Education</h2>
-            <div class="education-grid">
-                <div class="education-card slide-up">
-                    <div class="education-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
-                            <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
-                        </svg>
-                    </div>
-                    <h3>MSc in Software Engineering</h3>
-                    <p class="institution">University of Southampton, UK</p>
-                    <!-- <p class="year">2024 - 2025</p> -->
-                    <p class="description">Dissertation: Link2Feed - Full-stack Android app with Kotlin, Jetpack Compose, and Firebase. Integrated UK Gov APIs for verification with geolocation filtering.</p>
-                </div>
-                <div class="education-card slide-up">
-                    <div class="education-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
-                            <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
-                        </svg>
-                    </div>
-                    <h3>Bachelor's in Information Technology</h3>
-                    <p class="institution">AISSMS IOIT, India</p>
-                    <p class="year">2018 - 2020</p>
-                    <p class="description">CGPA: 6.99 | Published research paper on Image Processing Based on Topic Diversity</p>
-                </div>
-                <div class="education-card slide-up">
-                    <div class="education-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
-                            <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
-                        </svg>
-                    </div>
-                    <h3>Diploma in Information Technology</h3>
-                    <p class="institution">RIT Polytechnic, India</p>
-                    <p class="year">2015 - 2017</p>
-                    <p class="description">Percentage: 73.18% | Project: Steganography system using Java and LSB algorithm</p>
-                </div>
+            <div class="sec-head reveal">
+                <span class="sec-idx">04 / PROJECTS</span>
+                <h2 class="sec-title">Things I've <em class="serif grad-2">trained, built</em><br>&amp; deployed.</h2>
             </div>
-        </div>
-    </section>
 
-    <section id="projects" class="projects section">
-        <div class="container">
-            <h2 class="section-title slide-up">Featured Projects</h2>
-            <div class="projects-grid">
-                <div class="project-card slide-up">
-                    <div class="project-header">
-                        <div class="project-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <rect x="3" y="8" width="18" height="12" rx="2"></rect>
-                                <path d="M12 2v4"></path>
-                                <path d="M8 12h.01"></path>
-                                <path d="M16 12h.01"></path>
-                                <path d="M9 16h6"></path>
-                            </svg>
-                        </div>
-                        <span class="project-type">AI Platform</span>
-                    </div>
-                    <h3>AI Product (In progress)</h3>
-                    <p>Developing an AI-powered platform focused on intelligent assistants, LLM integration and workflow automation. Building scalable backend services with Python and FastAPI while integrating OpenAI APIs, Retrieval-Augmented Generation (RAG) and secure REST APIs for production-ready AI applications.</p>
-                    <div class="tech-tags">
-                        <span class="tag">Python</span>
-                        <span class="tag">FastAPI</span>
-                        <span class="tag">OpenAI</span>
-                        <span class="tag">LLMs</span>
-                        <span class="tag">RAG</span>
-                        <span class="tag">REST APIs</span>
-                    </div>
-                </div>
-                <div class="project-card slide-up">
-                    <div class="project-header">
-                        <div class="project-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
-                                <line x1="12" y1="18" x2="12.01" y2="18"></line>
-                            </svg>
-                        </div>
-                        <span class="project-type">Mobile App</span>
-                    </div>
+            <div class="projects">
+                <article class="proj p-xl reveal tilt spot" style="--c1:#f472b6;--c2:#8b5cf6">
+                    <div class="proj-glow"></div>
+                    <div class="proj-top"><span class="proj-badge live"><span class="live-dot"></span> In development</span><span class="proj-no">P/01</span></div>
+                    <h3>Small Language Model + Voice</h3>
+                    <p>My own product, in progress: a small language model with voice integration for the web and an Android app, built to run on free and open-source infrastructure. The domain stays under wraps until launch.</p>
+                    <div class="wave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+                    <div class="tags"><span>SLM training</span><span>Voice</span><span>Android</span><span>Open-source infra</span></div>
+                </article>
+
+                <article class="proj p-lg reveal tilt spot" style="--c1:#22d3ee;--c2:#a3e635">
+                    <div class="proj-glow"></div>
+                    <div class="proj-top"><span class="proj-badge">Fine-tuned LLM</span><span class="proj-no">P/02</span></div>
+                    <h3>SotonBuddy</h3>
+                    <p>A campus assistant for the University of Southampton that gives walking directions to buildings and answers university questions. Fine-tuned with <b>LoRA</b> on Q&amp;A pairs built from university documents using <b>Hugging Face &amp; PyTorch</b>. Built for MSc coursework and trialled on a free student workspace.</p>
+                    <div class="proj-stat"><b>68 / 83</b> classmates tried it in the test batch</div>
+                    <div class="tags"><span>LoRA</span><span>Hugging Face</span><span>PyTorch</span><span>Coursework</span></div>
+                </article>
+
+                <article class="proj reveal tilt spot" style="--c1:#8b5cf6;--c2:#22d3ee">
+                    <div class="proj-glow"></div>
+                    <div class="proj-top"><span class="proj-badge">In progress</span><span class="proj-no">P/03</span></div>
+                    <h3>AI Engineering Platform</h3>
+                    <p>Intelligent assistants &amp; workflow automation: FastAPI services, RAG over a <b>Chroma</b> vector store, LLM integration and secure REST APIs.</p>
+                    <div class="tags"><span>FastAPI</span><span>RAG</span><span>Chroma</span><span>OpenAI</span></div>
+                </article>
+
+                <article class="proj reveal tilt spot" style="--c1:#fbbf24;--c2:#f472b6">
+                    <div class="proj-glow"></div>
+                    <div class="proj-top"><span class="proj-badge">Live on this site</span><span class="proj-no">P/04</span></div>
+                    <h3>MACK · AI Career Agent</h3>
+                    <p>An assistant that answers recruiters' questions about me using retrieval over my knowledge base, Gemini 2.5 Flash and a Vercel serverless API. It can also score a job description against my profile. <a href="#" data-open-chat class="inline-link">Try it →</a></p>
+                    <div class="tags"><span>Gemini</span><span>Serverless</span><span>Prompting</span></div>
+                </article>
+
+                <article class="proj reveal tilt spot" style="--c1:#34d399;--c2:#22d3ee">
+                    <div class="proj-glow"></div>
+                    <div class="proj-top"><span class="proj-badge">In development</span><span class="proj-no">P/05</span></div>
+                    <h3>Job Octo</h3>
+                    <p>A job board that auto-fetches roles matching a profile and scores every posting with a skills-match percentage, plus an Applied → Accepted tracker.</p>
+                    <div class="tags"><span>Python</span><span>Matching</span><span>Automation</span></div>
+                </article>
+
+                <article class="proj p-full reveal tilt spot" style="--c1:#fb923c;--c2:#fbbf24">
+                    <div class="proj-glow"></div>
+                    <div class="proj-top"><span class="proj-badge">MSc dissertation</span><span class="proj-no">P/06</span></div>
                     <h3>Link2Feed</h3>
-                    <p>Full-stack Android mobile app using Kotlin, Jetpack Compose, Material Design 3. Integrated UK Gov APIs (Charity Commission, FHRS), Firebase backend with geolocation filtering and fair allocation algorithm.</p>
-                    <div class="tech-tags">
-                        <span class="tag">Kotlin</span>
-                        <span class="tag">Jetpack Compose</span>
-                        <span class="tag">Firebase</span>
-                        <span class="tag">REST APIs</span>
-                    </div>
-                </div>
+                    <p>Full-stack Android app with Kotlin and Jetpack Compose, using UK Gov APIs (Charity Commission, FHRS), Firebase, geolocation filtering and a fair-allocation algorithm.</p>
+                    <div class="tags"><span>Kotlin</span><span>Compose</span><span>Firebase</span><span>Gov APIs</span></div>
+                </article>
+            </div>
 
-                <div class="project-card slide-up">
-                    <div class="project-header">
-                        <div class="project-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M6.5 6.5a2.5 2.5 0 0 1 5 0v11a2.5 2.5 0 0 1-5 0v-11z"></path>
-                                <path d="M17.5 6.5a2.5 2.5 0 0 0-5 0v11a2.5 2.5 0 0 0 5 0v-11z"></path>
-                                <path d="M2 12h4"></path>
-                                <path d="M18 12h4"></path>
-                            </svg>
-                        </div>
-                        <span class="project-type">Fitness App</span>
-                    </div>
-                    <h3>MackFit Workout Application</h3>
-                    <p>Mobile application using Flutter and Dart with full functionality aligned with client requirements. Implemented JSON for efficient local storage and integrated Firebase for seamless hosting.</p>
-                    <div class="tech-tags">
-                        <span class="tag">Flutter</span>
-                        <span class="tag">Dart</span>
-                        <span class="tag">Firebase</span>
-                        <span class="tag">JSON</span>
-                    </div>
-                </div>
-
-                <div class="project-card slide-up">
-                    <div class="project-header">
-                        <div class="project-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
-                                <circle cx="8.5" cy="8.5" r="1.5"></circle>
-                                <polyline points="21 15 16 10 5 21"></polyline>
-                            </svg>
-                        </div>
-                        <span class="project-type">Web App</span>
-                    </div>
-                    <h3>Image Re-Ranking System</h3>
-                    <p>Image processing web application using JavaScript, PHP, MySQL, HTML/CSS. Integrated Hash Map algorithms to optimize performance and analyzed search engine limitations using PageRank methodology.</p>
-                    <div class="tech-tags">
-                        <span class="tag">JavaScript</span>
-                        <span class="tag">PHP</span>
-                        <span class="tag">MySQL</span>
-                        <span class="tag">Algorithms</span>
-                    </div>
-                </div>
-
-                <div class="project-card slide-up">
-                    <div class="project-header">
-                        <div class="project-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
-                            </svg>
-                        </div>
-                        <span class="project-type">Ed-Tech</span>
-                    </div>
-                    <h3>Ed-Tech Mobile App</h3>
-                    <p>Educational technology mobile application using Kotlin, Jetpack Compose, and Material 3 for modern UX. Contributed to fitness-focused web app with Next.js and Firebase.</p>
-                    <div class="tech-tags">
-                        <span class="tag">Kotlin</span>
-                        <span class="tag">Next.js</span>
-                        <span class="tag">Firebase</span>
-                        <span class="tag">Material 3</span>
-                    </div>
-                </div>
+            <div class="more-builds reveal">
+                <span class="mb-label">More builds</span>
+                <span>MackFit · Flutter workout app</span>
+                <span>Image Re-Ranking System · PHP/MySQL, published research</span>
+                <span>Ed-Tech app · Kotlin &amp; Next.js</span>
+                <span>Steganography · Java LSB</span>
             </div>
         </div>
     </section>
 
-    <section id="skills" class="skills section">
+    <!-- ============ CREDENTIALS ============ -->
+    <section id="credentials" class="section">
         <div class="container">
-            <h2 class="section-title slide-up">Skills & Technologies</h2>
-            <div class="skills-container">
-                <div class="skills-category slide-up">
-                    <h3>Programming Languages</h3>
-                    <div class="skills-grid">
-                        <div class="skill-item">
-                            <span class="skill-name">C/C++</span>
-                            <div class="skill-bar"><div class="skill-progress" style="--progress: 85%"></div></div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">Python</span>
-                            <div class="skill-bar"><div class="skill-progress" style="--progress: 90%"></div></div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">Java</span>
-                            <div class="skill-bar"><div class="skill-progress" style="--progress: 86%"></div></div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">Kotlin</span>
-                            <div class="skill-bar"><div class="skill-progress" style="--progress: 85%"></div></div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">SQL</span>
-                            <div class="skill-bar"><div class="skill-progress" style="--progress: 80%"></div></div>
-                        </div>
-                        <!-- <div class="skill-item">
-                            <span class="skill-name">Dart</span>
-                            <div class="skill-bar"><div class="skill-progress" style="--progress: 85%"></div></div>
-                        </div> -->
+            <div class="sec-head reveal">
+                <span class="sec-idx">05 / CREDENTIALS</span>
+                <h2 class="sec-title">Education &amp; <em class="serif grad">certifications</em></h2>
+            </div>
+
+            <div class="cred-grid">
+                <div class="cred-col reveal">
+                    <h4 class="cred-h">Education</h4>
+                    <div class="cred-item spot">
+                        <b>MSc Software Engineering</b>
+                        <span>University of Southampton, UK</span>
+                    </div>
+                    <div class="cred-item spot">
+                        <b>B.E. Information Technology</b>
+                        <span>AISSMS IOIT, India · published research on image re-ranking</span>
+                    </div>
+                    <div class="cred-item spot">
+                        <b>Diploma in Information Technology</b>
+                        <span>RIT Polytechnic, India</span>
                     </div>
                 </div>
-
-                <div class="skills-category slide-up">
-                    <h3>Frameworks & Tools</h3>
-                    <div class="skills-tags">
-                        <span class="skill-tag">Spring Boot</span>
-                        <span class="skill-tag">FastAPI</span>
-                        <span class="skill-tag">ReactJS</span>
-                        <span class="skill-tag">REST APIs</span>
-                        <span class="skill-tag">OpenAPI</span>
-                        <span class="skill-tag">Git</span>
-                        <span class="skill-tag">Jenkins</span>
-                        <span class="skill-tag">AWS</span>
-                        <span class="skill-tag">Linux</span>
-                        <span class="skill-tag">Docker</span>
-                        <span class="skill-tag">Postman</span>
-                        <span class="skill-tag">Wireshark</span>
-                        <span class="skill-tag">Firebase</span>
-                        <span class="skill-tag">Kotlin</span>
+                <div class="cred-col reveal">
+                    <h4 class="cred-h">Certifications</h4>
+                    <div class="cert-list">
+                        <span class="cert"><b>Career Essentials in GitHub</b><i>GitHub · LinkedIn · 2026</i></span>
+                        <span class="cert"><b>Claude Code in Action</b><i>Anthropic · 2026</i></span>
+                        <span class="cert"><b>Data Warehousing Workshop</b><i>Snowflake · 2026</i></span>
+                        <span class="cert"><b>Collaboration, Marketplace &amp; Cost Estimation</b><i>Snowflake · 2026</i></span>
+                        <span class="cert"><b>Cloud Computing</b><i>IBM · 2023</i></span>
+                        <span class="cert"><b>Dart Functions Framework</b><i>Google Cloud · 2023</i></span>
+                        <span class="cert"><b>Agile Software Development</b><i>Coursera · 2022</i></span>
+                        <span class="cert"><b>AWS S3</b><i>Coursera · 2021</i></span>
+                        <span class="cert"><b>Java OOP</b><i>LinkedIn · 2021</i></span>
                     </div>
                 </div>
-
-                <div class="skills-category slide-up">
-                    <h3>Soft Skills</h3>
-                    <div class="soft-skills">
-                        <div class="soft-skill-item">
-                            <div class="soft-skill-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                                    <circle cx="9" cy="7" r="4"></circle>
-                                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-                                    <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-                                </svg>
-                            </div>
-                            <span>Team Collaboration</span>
-                        </div>
-                        <div class="soft-skill-item">
-                            <div class="soft-skill-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <circle cx="12" cy="12" r="10"></circle>
-                                    <line x1="2" y1="12" x2="22" y2="12"></line>
-                                    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
-                                </svg>
-                            </div>
-                            <span>Problem Solving</span>
-                        </div>
-                        <div class="soft-skill-item">
-                            <div class="soft-skill-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
-                                </svg>
-                            </div>
-                            <span>Technical Mentoring</span>
-                        </div>
-                        <div class="soft-skill-item">
-                            <div class="soft-skill-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M12 20h9"></path>
-                                    <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
-                                </svg>
-                            </div>
-                            <span>Ownership</span>
-                        </div>
+                <div class="cred-col reveal">
+                    <h4 class="cred-h">Speaking</h4>
+                    <div class="cred-item spot">
+                        <b>Dark Web Security Risks</b>
+                        <span>University of Southampton. Tor/I2P, Silk Road, ransomware-as-a-service, credential stuffing &amp; threat-intel mitigation.</span>
+                    </div>
+                    <div class="cred-item spot">
+                        <b>Mobile App Development · Guest lecture</b>
+                        <span>AISSMS IOIT. A live Flutter build, state management &amp; database choices for 40+ students.</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="certifications" class="certifications section">
+    <!-- ============ CONTACT ============ -->
+    <section id="contact" class="section contact">
+        <div class="contact-orb" aria-hidden="true"></div>
         <div class="container">
-            <h2 class="section-title slide-up">Certifications</h2>
-            <div class="cert-grid">
-                 <div class="cert-card slide-up">
-                    <div class="cert-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="12" cy="8" r="7"></circle>
-                            <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline>
-                        </svg>
-                    </div>
-                    <h4>Hands-On Essentials: Data Warehousing Workshop </h4>
-                    <p>Snowflake, 2026</p>
-                </div>
-                <div class="cert-card slide-up">
-                    <div class="cert-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="12" cy="8" r="7"></circle>
-                            <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline>
-                        </svg>
-                    </div>
-                    <h4>Hands-On Essentials: Collaboration, Marketplace & Cost Estimation Workshop</h4>
-                    <p>Snowflake, 2026</p>
-                </div>
-                <div class="cert-card slide-up">
-                    <div class="cert-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="12" cy="8" r="7"></circle>
-                            <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline>
-                        </svg>
-                    </div>
-                    <h4>Claude Code in Action</h4>
-                    <p>Anthropic, 2026</p>
-                </div>
-                <div class="cert-card slide-up">
-                    <div class="cert-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="12" cy="8" r="7"></circle>
-                            <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline>
-                        </svg>
-                    </div>
-                    <h4>Java Object-Oriented Programming</h4>
-                    <p>LinkedIn - 2021</p>
-                </div>
-                <div class="cert-card slide-up">
-                    <div class="cert-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="12" cy="8" r="7"></circle>
-                            <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline>
-                        </svg>
-                    </div>
-                    <h4>Amazon Web Service S3 Bucket</h4>
-                    <p>Coursera - 2021</p>
-                </div>
-                <div class="cert-card slide-up">
-                    <div class="cert-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="12" cy="8" r="7"></circle>
-                            <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline>
-                        </svg>
-                    </div>
-                    <h4>Agile Software Development</h4>
-                    <p>Coursera - 2022</p>
-                </div>
-                <div class="cert-card slide-up">
-                    <div class="cert-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="12" cy="8" r="7"></circle>
-                            <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline>
-                        </svg>
-                    </div>
-                    <h4>Dart Functions Framework</h4>
-                    <p>Google Cloud - 2023</p>
-                </div>
-                <div class="cert-card slide-up">
-                    <div class="cert-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="12" cy="8" r="7"></circle>
-                            <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline>
-                        </svg>
-                    </div>
-                    <h4>Cloud Computing</h4>
-                    <p>IBM - 2023</p>
-                </div>
+            <span class="sec-idx reveal">06 / CONTACT</span>
+            <h2 class="contact-title reveal">Let's build something<br><em class="serif grad">intelligent.</em></h2>
+            <p class="contact-sub reveal">Open to <b>GenAI, MLOps, AI and Backend Engineer</b> roles across the UK, Europe and worldwide. Immediate joiner, happy to relocate.</p>
+            <div class="contact-cta reveal">
+                <a href="mailto:mayurdokras@gmail.com" class="btn btn-glow btn-xl magnetic">mayurdokras@gmail.com <span>↗</span></a>
+            </div>
+            <div class="contact-links reveal">
+                <a href="https://www.linkedin.com/in/mayur-dokras-92ab67146" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+                <a href="tel:+447776773819">+44 7776 773819</a>
+                <a href="Mayur_Dokras_CV.pdf" download="Mayur_Dokras_CV.pdf">CV.pdf ↓</a>
+                <a href="#" data-open-chat>Ask MACK ✦</a>
             </div>
         </div>
+        <footer class="footer">
+            <span>© 2026 Mayur Dokras</span>
+            <span class="footer-mid">Designed and built by Mayur Dokras</span>
+            <span id="clock">--:--:-- IST</span>
+        </footer>
     </section>
+    </main>
 
-    <section id="workshops" class="workshops section">
-        <div class="container">
-            <h2 class="section-title slide-up">Workshops & Engagement</h2>
-            <div class="workshops-grid">
-                <div class="workshop-card slide-up">
-                    <div class="workshop-header">
-                        <div class="workshop-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-                            </svg>
-                        </div>
-                        <span class="workshop-type">Presentation</span>
-                    </div>
-                    <h3>Dark Web Security Risks</h3>
-                    <p class="workshop-venue">University of Southampton, UK</p>
-                    <p class="workshop-desc">Presented an in-depth analysis of Dark Web risks including Tor/I2P networks, the Silk Road case study (operation and FBI takedown), ransomware-as-a-service, and credential stuffing attacks. Outlined organizational impacts such as data breaches and brand risk, along with mitigation strategies including dark-web monitoring, threat intelligence, and incident response.</p>
-                    <div class="tech-tags">
-                        <span class="tag">Cybersecurity</span>
-                        <span class="tag">Dark Web</span>
-                        <span class="tag">Threat Intelligence</span>
-                    </div>
-                </div>
-
-                <div class="workshop-card slide-up">
-                    <div class="workshop-header">
-                        <div class="workshop-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                                <circle cx="9" cy="7" r="4"></circle>
-                                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-                                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-                            </svg>
-                        </div>
-                        <span class="workshop-type">Guest Lecture</span>
-                    </div>
-                    <h3>Mobile Application Development</h3>
-                    <p class="workshop-venue">AISSMS IOIT, India</p>
-                    <p class="workshop-desc">Delivered a guest lecture to 3rd year Bachelor's students, demonstrating a live Flutter/Dart calculator app covering UI widgets, event handling, and state management. Explained widget layout concepts and engaged 40+ students with practical examples on database selection (relational vs NoSQL, Firebase, PostgreSQL) and scalability strategies.</p>
-                    <div class="tech-tags">
-                        <span class="tag">Flutter</span>
-                        <span class="tag">Dart</span>
-                        <span class="tag">Firebase</span>
-                        <span class="tag">Teaching</span>
-                    </div>
-                </div>
-            </div>
+    <!-- ============ COMMAND PALETTE ============ -->
+    <div class="cmdk" id="cmdk" aria-hidden="true">
+        <div class="cmdk-box" role="dialog" aria-label="Command palette">
+            <input id="cmdkInput" type="text" placeholder="Type a command or search…" autocomplete="off">
+            <ul id="cmdkList">
+                <li data-go="#about">→ About</li>
+                <li data-go="#stack">→ How I ship AI</li>
+                <li data-go="#experience">→ Experience</li>
+                <li data-go="#projects">→ Projects</li>
+                <li data-go="#credentials">→ Credentials</li>
+                <li data-go="#contact">→ Contact</li>
+                <li data-act="chat">✦ Ask MACK, my AI agent</li>
+                <li data-act="cv">↓ Download CV</li>
+                <li data-act="mail">✉ Email Mayur</li>
+                <li data-act="linkedin">↗ Open LinkedIn</li>
+            </ul>
+            <div class="cmdk-foot"><span>↑↓ navigate</span><span>↵ select</span><span>esc close</span></div>
         </div>
-    </section>
+    </div>
 
-    <section id="contact" class="contact section">
-        <div class="container">
-            <h2 class="section-title slide-up">Get In Touch</h2>
-            <div class="contact-content slide-up">
-                <p class="contact-intro">I am currently in Southampton and actively seeking Software Engineering opportunities across the UK. I am available to relocate immediately and would require visa sponsorship for long-term employment. Whether you have an opportunity or would simply like to connect, I would be delighted to hear from you !</p>
-                <div class="contact-methods">
-                    <a href="mailto:mayurdokras@gmail.com" class="contact-card">
-                        <div class="contact-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                                <polyline points="22,6 12,13 2,6"></polyline>
-                            </svg>
-                        </div>
-                        <span>mayurdokras@gmail.com</span>
-                    </a>
-                    <a href="tel:+447776773819" class="contact-card">
-                        <div class="contact-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-                            </svg>
-                        </div>
-                        <span>+44 7776773819</span>
-                    </a>
-                    <a href="https://www.linkedin.com/in/mayur-dokras-92ab67146" target="_blank" rel="noopener noreferrer" class="contact-card">
-                        <div class="contact-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-                                <rect x="2" y="9" width="4" height="12"></rect>
-                                <circle cx="4" cy="4" r="2"></circle>
-                            </svg>
-                        </div>
-                        <span>LinkedIn Profile</span>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
+    <!-- ============ MACK CHAT ============ -->
     <div class="chat-widget">
         <div class="chat-btn-wrapper">
-            <div class="chat-popup-msg">
-                <span>Ask me about Mayur !</span>
-                <div class="popup-tail"></div>
-            </div>
+            <div class="chat-popup-msg"><span>Ask my AI about me ✦</span></div>
             <button class="chat-toggle" id="chatToggle" aria-label="Chat with MACK">
-                <svg class="chat-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-                </svg>
+                <span class="orb-core"></span>
+                <svg class="chat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
             </button>
         </div>
-        <div class="chat-panel" id="chatPanel">
+        <div class="chat-panel" id="chatPanel" role="dialog" aria-label="Chat with MACK">
             <div class="chat-header">
-                <div class="chat-header-content">
-                    <div class="chat-robot-left">
-                        <svg class="robot-icon-header" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <rect x="4" y="10" width="16" height="10" rx="2"></rect>
-                            <circle cx="9" cy="15" r="1"></circle>
-                            <circle cx="15" cy="15" r="1"></circle>
-                            <path d="M9 6V4"></path>
-                            <path d="M15 6V4"></path>
-                            <path d="M9 10h6"></path>
-                        </svg>
-                    </div>
-                    <div class="chat-header-text">
-                        <h3>MACK</h3>
-                        <p>Mayur's AI Career Assistant</p>
-                        <span class="chat-status"><span class="status-dot-small"></span> Online</span>
-                    </div>
+                <div class="chat-avatar"><span></span></div>
+                <div class="chat-header-text">
+                    <h3>MACK <em>v5 · RAG</em></h3>
+                    <p><span class="live-dot"></span> Grounded on Mayur's knowledge base</p>
                 </div>
-                <button class="chat-close" id="chatClose" aria-label="Close chat">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                <button class="chat-icon-btn" id="chatVoice" aria-label="Read answers aloud" aria-pressed="false" title="Read answers aloud">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4V5z"/><path class="wave-on" d="M15.5 8.5a5 5 0 0 1 0 7"/><path class="wave-on" d="M19 5a10 10 0 0 1 0 14"/></svg>
+                </button>
+                <button class="chat-icon-btn" id="chatClose" aria-label="Close chat">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
                 </button>
             </div>
-            <div class="chat-messages" id="chatMessages">
+            <div class="chat-modes" role="tablist" aria-label="Chat mode">
+                <button class="chat-mode active" role="tab" aria-selected="true" data-mode="chat">Ask about Mayur</button>
+                <button class="chat-mode" role="tab" aria-selected="false" data-mode="jd">✦ Match a job</button>
+                <span class="chat-mode-pill" aria-hidden="true"></span>
+            </div>
+            <div class="chat-messages" id="chatMessages" aria-live="polite">
                 <div class="chat-message bot">
-                    <p>Hi! I'm <strong>MACK</strong> — trained on Mayur's experience. Ask me about his work, skills, projects, or education. Try a question below or type your own!</p>
+                    <p>Hi, I'm <strong>MACK</strong>. I answer questions about Mayur using his knowledge base. Ask me anything, or switch to <strong>Match a job</strong> and paste a job description to see how well he fits.</p>
                 </div>
                 <div class="chat-suggestions" id="chatSuggestions">
-                    <span class="suggestion-label">Questions employers often ask:</span>
-                    <button class="suggestion-chip" data-question="What is Mayur's experience at Capgemini?">Capgemini experience</button>
-                    <button class="suggestion-chip" data-question="What are Mayur's technical skills?">Technical skills</button>
-                    <button class="suggestion-chip" data-question="Tell me about Mayur's projects">Projects</button>
-                    <button class="suggestion-chip" data-question="What is Mayur's education?">Education</button>
-                    <button class="suggestion-chip" data-question="What did Mayur do at University of Southampton?">Southampton role</button>
-                    <button class="suggestion-chip" data-question="Is Mayur open to work in UK?">UK opportunities</button>
-                    <button class="suggestion-chip" data-question="What programming languages does Mayur know?">Languages</button>
-                    <button class="suggestion-chip" data-question="Does Mayur have mobile development experience?">Mobile development</button>
-                    <button class="suggestion-chip" data-question="What certifications does Mayur have?">Certifications</button>
-                    <button class="suggestion-chip" data-question="Does Mayur have iOS app experience?">iOS experience</button>
-                    <button class="suggestion-chip" data-question="What ongoing projects is Mayur working on for UK market?">UK market projects</button>
-                    <button class="suggestion-chip" data-question="What is Mayur's experience with LLM and AI deployment?">LLM & AI experience</button>
-                    <button class="suggestion-chip" data-question="Does Mayur have experience working with international colleagues or global teams?">International team experience</button>
-                    <button class="suggestion-chip" data-question="Tell me about Mayur's Backend Engineer role at Malvox">Malvox / startup experience</button>
-                    <button class="suggestion-chip" data-question="Has Mayur worked with PhD researchers or in an academic/startup environment?">PhD / research collaboration</button>
+                    <span class="suggestion-label">Recruiters often ask:</span>
+                    <button class="suggestion-chip" data-question="What is Mayur's experience with LLMs and GenAI?">LLM &amp; GenAI work</button>
+                    <button class="suggestion-chip" data-question="Has Mayur fine-tuned a model?">Fine-tuning</button>
+                    <button class="suggestion-chip" data-question="What did Mayur do at Capgemini?">Capgemini</button>
+                    <button class="suggestion-chip" data-question="Tell me about Mayur's role at Malvox">Malvox backend</button>
+                    <button class="suggestion-chip" data-question="What are Mayur's technical skills?">Tech stack</button>
+                    <button class="suggestion-chip" data-question="Is Mayur an immediate joiner and open to relocation?">Availability</button>
+                    <button class="suggestion-chip jd-chip" data-switch-mode="jd">✦ Score a job description</button>
                 </div>
             </div>
             <div class="chat-input-area">
-                <input type="text" id="chatInput" placeholder="Ask MACK about Mayur..." autocomplete="off">
+                <button class="chat-icon-btn chat-mic" id="chatMic" aria-label="Ask with your voice" title="Ask with your voice" hidden>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10a7 7 0 0 0 14 0"/><path d="M12 17v5"/></svg>
+                </button>
+                <textarea id="chatInput" rows="1" placeholder="Ask MACK anything about Mayur…" autocomplete="off" aria-label="Message"></textarea>
                 <button class="chat-send" id="chatSend" aria-label="Send">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <line x1="22" y1="2" x2="11" y2="13"></line>
-                        <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
-                    </svg>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
                 </button>
             </div>
+            <div class="chat-meta" id="chatMeta">Gemini 2.5 Flash · hybrid RAG · evaluated in CI</div>
         </div>
     </div>
 
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2026 Mayur Dokras. Built with passion.</p>
-        </div>
-    </footer>
-
-    <script>
-        (function initWelcomeOverlay() {
-            const overlay = document.getElementById('welcomeOverlay');
-            const messageEl = document.getElementById('welcomeMessage');
-            const VISIT_KEY = 'portfolio_visited';
-            const SESSION_KEY = 'welcome_shown';
-
-            if (!overlay || !messageEl) return;
-
-            if (sessionStorage.getItem(SESSION_KEY) === 'true') {
-                overlay.classList.add('hidden');
-                return;
-            }
-
-            const isReturning = localStorage.getItem(VISIT_KEY) === 'true';
-
-            // if (isReturning) {
-            //     messageEl.innerHTML = 'Welcome back ! <span class="highlight">Great to see you again.</span><br><br>I hope you find something interesting here...<br><br> (Click on screen to see website)';
-            // } else {
-            //     messageEl.innerHTML = 'Hey, thanks for stopping by! <span class="highlight">Really glad you\'re here.</span><br><br>Take a look around, I would love to connect..!';
-            // }
-
-            if (isReturning) {
-                    messageEl.innerHTML = `Welcome back! <span class="highlight">Great to see you again.</span>
-                                        <br><br>
-                                        I hope you find something interesting here...
-                                        <br><br>
-                                        <span class="welcome-hint">
-                                        <span class="click-icon">☝</span>Click anywhere to enter the website</span>`;
-                            } else {
-                    messageEl.innerHTML = `
-                        Hey, thanks for stopping by! 
-                        <span class="highlight">Really glad you're here.</span>
-                        <br><br>
-                        Take a look around, I would love to connect.
-                        <br><br>
-                        <span class="welcome-hint">Click anywhere to enter the website</span>`;
-                            }
-
-            overlay.addEventListener('click', () => {
-                overlay.classList.add('hidden');
-                localStorage.setItem(VISIT_KEY, 'true');
-                sessionStorage.setItem(SESSION_KEY, 'true');
-            });
-        })();
-
-        if (matchMedia('(hover: hover)').matches) {
-            const cursorDot = document.getElementById('cursorDot');
-            const cursorGlow = document.getElementById('cursorGlow');
-            const clickables = document.querySelectorAll('a, button, .btn, .nav-link, .contact-card, .project-card, .workshop-card, .education-card, .cert-card');
-
-            let mouseX = 0, mouseY = 0;
-            let glowX = 0, glowY = 0;
-            let shineX = 0, shineY = 0;
-            let shineX2 = 0, shineY2 = 0;
-
-            document.addEventListener('mousemove', (e) => {
-                mouseX = e.clientX;
-                mouseY = e.clientY;
-
-                cursorDot.style.left = mouseX + 'px';
-                cursorDot.style.top = mouseY + 'px';
-            });
-
-            function animateGlow() {
-                glowX += (mouseX - glowX) * 0.15;
-                glowY += (mouseY - glowY) * 0.15;
-                shineX += (mouseX - shineX) * 0.1;
-                shineY += (mouseY - shineY) * 0.1;
-                shineX2 += (mouseX - shineX2) * 0.04;
-                shineY2 += (mouseY - shineY2) * 0.04;
-
-                cursorGlow.style.left = glowX + 'px';
-                cursorGlow.style.top = glowY + 'px';
-
-                document.documentElement.style.setProperty('--cursor-x', shineX + 'px');
-                document.documentElement.style.setProperty('--cursor-y', shineY + 'px');
-                document.documentElement.style.setProperty('--cursor-x2', shineX2 + 'px');
-                document.documentElement.style.setProperty('--cursor-y2', shineY2 + 'px');
-
-                requestAnimationFrame(animateGlow);
-            }
-            animateGlow();
-
-            clickables.forEach(el => {
-                el.addEventListener('mouseenter', () => document.body.classList.add('hovering-clickable'));
-                el.addEventListener('mouseleave', () => document.body.classList.remove('hovering-clickable'));
-            });
-
-            const heroName = document.getElementById('heroName');
-            if (heroName) {
-                const updateNameSpotlight = (e) => {
-                    const rect = heroName.getBoundingClientRect();
-                    const x = e.clientX - rect.left;
-                    const y = e.clientY - rect.top;
-                    const inside = x >= 0 && x <= rect.width && y >= 0 && y <= rect.height;
-                    if (inside) {
-                        document.body.classList.add('hovering-clickable');
-                        heroName.style.setProperty('--name-x', x + 'px');
-                        heroName.style.setProperty('--name-y', y + 'px');
-                    } else {
-                        document.body.classList.remove('hovering-clickable');
-                        heroName.style.setProperty('--name-x', '-999px');
-                        heroName.style.setProperty('--name-y', '-999px');
-                    }
-                };
-                document.addEventListener('mousemove', updateNameSpotlight);
-            }
-        }
-
-        const hamburger = document.querySelector('.hamburger');
-        const navMenu = document.querySelector('.nav-menu');
-
-        hamburger.addEventListener('click', () => {
-            hamburger.classList.toggle('active');
-            navMenu.classList.toggle('active');
-        });
-
-        document.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', () => {
-                hamburger.classList.remove('active');
-                navMenu.classList.remove('active');
-            });
-        });
-
-        window.addEventListener('scroll', () => {
-            const navbar = document.querySelector('.navbar');
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-        });
-
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.fade-in, .slide-up').forEach(el => {
-            observer.observe(el);
-        });
-
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        const sections = document.querySelectorAll('section[id]');
-        
-        window.addEventListener('scroll', () => {
-            let current = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop - 100;
-                if (scrollY >= sectionTop) {
-                    current = section.getAttribute('id');
-                }
-            });
-
-            document.querySelectorAll('.nav-link').forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === `#${current}`) {
-                    link.classList.add('active');
-                }
-            });
-        });
-
-        const skillBars = document.querySelectorAll('.skill-progress');
-        const skillObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.width = entry.target.style.getPropertyValue('--progress');
-                }
-            });
-        }, { threshold: 0.5 });
-
-        skillBars.forEach(bar => skillObserver.observe(bar));
-
-        const CHAT_API_URL = 'https://mayur-dokras-github-io.vercel.app/api/chat';
-        const chatToggle = document.getElementById('chatToggle');
-        const chatPanel = document.getElementById('chatPanel');
-        const chatClose = document.getElementById('chatClose');
-        const chatMessages = document.getElementById('chatMessages');
-        const chatInput = document.getElementById('chatInput');
-        const chatSend = document.getElementById('chatSend');
-
-        const chatPopupMsg = document.querySelector('.chat-popup-msg');
-
-        chatToggle.addEventListener('click', () => {
-            chatPanel.classList.toggle('open');
-            if (chatPanel.classList.contains('open')) {
-                chatInput.focus();
-                chatPopupMsg?.classList.add('hidden');
-            } else {
-                chatPopupMsg?.classList.remove('hidden');
-            }
-        });
-
-        chatClose.addEventListener('click', () => {
-            chatPanel.classList.remove('open');
-            chatPopupMsg?.classList.remove('hidden');
-        });
-
-        function formatBotResponse(text) {
-            if (!text) return '';
-            let s = String(text)
-                .replace(/&/g, '&amp;')
-                .replace(/</g, '&lt;')
-                .replace(/>/g, '&gt;');
-            s = s.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
-            s = s.replace(/\n/g, '<br>');
-            s = s.replace(/(^|<br>)\s*[\*\-]\s+/g, '$1• ');
-            return s;
-        }
-
-        function addMessage(text, isUser) {
-            const div = document.createElement('div');
-            div.className = `chat-message ${isUser ? 'user' : 'bot'}`;
-            const content = isUser ? text.replace(/</g, '&lt;').replace(/>/g, '&gt;') : formatBotResponse(text);
-            div.innerHTML = `<p>${content}</p>`;
-            chatMessages.appendChild(div);
-            chatMessages.scrollTop = chatMessages.scrollHeight;
-        }
-
-        function addTyping() {
-            const div = document.createElement('div');
-            div.className = 'chat-message bot typing';
-            div.innerHTML = '<p>Thinking...</p>';
-            div.dataset.typing = 'true';
-            chatMessages.appendChild(div);
-            chatMessages.scrollTop = chatMessages.scrollHeight;
-            return div;
-        }
-
-        async function sendMessage() {
-            const message = chatInput.value.trim();
-            if (!message) return;
-
-            addMessage(message, true);
-            chatInput.value = '';
-            chatSend.disabled = true;
-            document.getElementById('chatSuggestions')?.classList.add('hidden');
-
-            const typingEl = addTyping();
-
-            try {
-                const res = await fetch(CHAT_API_URL, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ message })
-                });
-                const data = await res.json().catch(() => ({}));
-
-                typingEl.remove();
-                if (res.ok && data.reply) {
-                    addMessage(data.reply, false);
-                } else {
-                    const errMsg = data.error || (res.status === 401 ? 'API key not set on Vercel.' : res.status === 404 ? 'Wrong API URL. Check CHAT_API_URL in index.html.' : `Server error (${res.status}). Try again later.`);
-                    addMessage(errMsg, false);
-                }
-            } catch (err) {
-                typingEl.remove();
-                addMessage('Unable to connect. Check CHAT_API_URL or your internet.', false);
-            }
-
-            showSuggestionsAfterResponse();
-            chatSend.disabled = false;
-        }
-
-        chatSend.addEventListener('click', sendMessage);
-        chatInput.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') sendMessage();
-        });
-
-        function showSuggestionsAfterResponse() {
-            const el = document.getElementById('chatSuggestions');
-            if (el) {
-                const label = el.querySelector('.suggestion-label');
-                if (label) label.textContent = 'More questions:';
-                el.classList.remove('hidden');
-                chatMessages.scrollTop = chatMessages.scrollHeight;
-            }
-        }
-
-        document.querySelectorAll('.suggestion-chip').forEach(chip => {
-            chip.addEventListener('click', () => {
-                const question = chip.dataset.question;
-                if (question) {
-                    chatInput.value = question;
-                    sendMessage();
-                }
-            });
-        });
-    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js" defer></script>
+    <script src="api/_lib/rag.js" defer></script>
+    <script src="script.js" defer></script>
 </body>
 </html>
