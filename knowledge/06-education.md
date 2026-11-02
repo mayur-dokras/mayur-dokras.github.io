@@ -7,9 +7,9 @@ questions:
 ---
 
 ## Education
-- MSc in Software Engineering, University of Southampton, UK.
-- Bachelor's in Information Technology, AISSMS IOIT, India (2018 to 2020). Published a research paper on image processing based on topic diversity.
-- Diploma in Information Technology, RIT Polytechnic, India (2015 to 2017).
+- MSc in Software Engineering, University of Southampton, UK (2024 to 2026).
+- Bachelor of Engineering (B.E.) in Information Technology, AISSMS IOIT, Pune, India (2017 to 2020), joined through direct second-year entry after the diploma. His bachelor's research project was on image re-ranking based on topic diversity.
+- Diploma in Information Technology, RIT Polytechnic, India (2014 to 2017), started right after 10th standard.
 
 ## Certifications
 - Career Essentials in GitHub Professional Certificate (GitHub and LinkedIn Learning, 2026)

@@ -11,14 +11,14 @@ Part-time Backend Engineer at Malvox, an early-stage UK cyber-security startup c
 - Integrated 3 UK Government APIs using Python, SQL and REST APIs for secure backend workflows, with GDPR compliance.
 - Designed relational data models and secure data flows using OAuth2, HTTPS/TLS and AES-256 encryption.
 - Implemented authentication, authorisation and rate limiting.
-- Services were deployed on Kubernetes.
+- Services were deployed on Kubernetes, secured with network policies, pod security and workload isolation.
 - Debugged API, authentication, database and integration issues across real-time workflows.
 - Developed a browser plugin and maintained the CI/CD pipeline.
 - Worked alongside PhD researchers in an international, multicultural team using Agile, Git and CI/CD.
-- The Malvox website was built in React, so he also worked with React there.
+- The Malvox web application was built in React and TypeScript, and he worked across the stack on it.
 
-## Capgemini Engineering: Software Engineer (Nov 2021 to Nov 2024)
-Three years as a full-time Software Engineer (grade Associate II), focused on Python tool development, debugging and production support for global telecom clients.
+## Capgemini Engineering (formerly Altran): Software Engineer (Nov 2021 to Nov 2024)
+Three years as a full-time Software Engineer (grade Associate II) in an R&D engineering role at Capgemini Engineering, formerly Altran, which Capgemini acquired in 2020. His core work was in C/C++ alongside Python: tool development, debugging and production support for global telecom clients. The role was client-facing: he worked directly with clients in the UK, US and EMEA, which is consulting and forward-deployed style experience.
 - Built 5 Python automation tools for debugging, log analysis and operational workflows, reducing manual engineering effort.
 - Debugged and supported production systems on Linux, working with Python and C/C++ code.
 - Performed root-cause analysis with GDB, Wireshark and system logs, contributing to a 25% reduction in mean time to resolution (MTTR).
@@ -31,4 +31,5 @@ Remote freelance work for a FinTech startup client in Australia.
 - Designed and delivered a cross-platform FinTech application using Flutter and Firebase.
 - Built frontend, backend and API-connected application workflows.
 - Integrated PayPal and Razorpay APIs for multi-currency payment processing.
-- Implemented authentication (JWT/OAuth2), real-time data synchronisation and secure transaction workflows.
+- Implemented authentication (JWT/OAuth2), real-time data synchronisation, CRM data handling and secure transaction workflows.
+- Acted as the client-facing principal technical contact for the Australian client, coordinating 3 to 4 engineers and achieving 20% faster release cycles.

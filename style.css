@@ -302,7 +302,10 @@ body.ready .pit-hint { opacity: 1; }
 @keyframes packet { 0% { left: -4px; opacity: 0; } 15% { opacity: 1; } 85% { opacity: 1; } 100% { left: calc(100% - 4px); opacity: 0; } }
 
 .stack-rows { margin-top: 40px; display: flex; flex-direction: column; gap: 12px; }
-.stack-row { display: flex; align-items: center; gap: 16px; }
+.stack-row { display: flex; align-items: flex-start; gap: 16px; }
+.skill-list { flex: 1; display: flex; flex-wrap: wrap; gap: 8px; list-style: none; margin: 0; padding: 0; }
+.skill-list li { padding: 8px 14px; border-radius: 999px; border: 1px solid var(--line-2); background: var(--panel); font-size: 14px; line-height: 1.2; }
+.stack-label { padding-top: 9px; }
 .stack-label { flex: 0 0 90px; font-family: var(--f-mono); font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--cyan); }
 .marquee { flex: 1; overflow: hidden; mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
 .marquee-track { display: flex; gap: 10px; width: max-content; animation: marquee 40s linear infinite; }
