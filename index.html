@@ -15,7 +15,17 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=20261102">
+    <style>
+        /* Skills panel: static chips (inline so it works even if an old style.css is cached) */
+        .stack-row { display: flex; align-items: flex-start; gap: 16px; }
+        .stack-label { padding-top: 9px; }
+        .skill-list { flex: 1; display: flex; flex-wrap: wrap; gap: 8px; list-style: none; margin: 0; padding: 0; }
+        .skill-list li { padding: 8px 14px; border-radius: 999px; border: 1px solid var(--line-2, rgba(255,255,255,.14)); background: var(--panel, rgba(255,255,255,.04)); font-size: 14px; line-height: 1.2; transition: background .25s, color .25s, border-color .25s; }
+        .skill-list li::marker { content: none; }
+        .skill-list li:hover { background: #fff; color: #05060a; border-color: #fff; }
+        @media (max-width: 720px) { .stack-row { flex-direction: column; gap: 8px; } .stack-label { padding-top: 0; } }
+    </style>
 </head>
 <body class="is-booting">
 
@@ -582,6 +592,6 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js" defer></script>
     <script src="api/_lib/rag.js" defer></script>
-    <script src="script.js" defer></script>
+    <script src="script.js?v=20261102" defer></script>
 </body>
 </html>
