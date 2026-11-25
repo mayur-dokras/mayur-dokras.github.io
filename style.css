@@ -601,3 +601,19 @@ a.src:hover { background: rgba(139,92,246,.25); }
 @media (prefers-reduced-motion: reduce) {
     .sfx .sfx-block { translate: none; scale: none; rotate: none; }
 }
+
+/* ---------------- Forward deployed ---------------- */
+.fde-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+.fde-card { position: relative; display: flex; flex-direction: column; gap: 10px; border-radius: var(--r); border: 1px solid var(--line); background: var(--panel); padding: 26px 24px 22px; overflow: hidden; transition: border-color .3s, box-shadow .35s var(--ease); }
+.fde-card::before { content: ""; position: absolute; left: 24px; right: 24px; top: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--c), transparent); opacity: .7; }
+.fde-card:hover { border-color: color-mix(in srgb, var(--c) 40%, transparent); box-shadow: 0 24px 60px -30px var(--c); }
+.fde-step { font-family: var(--f-mono); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--c); }
+.fde-card h4 { font-size: 20px; letter-spacing: -0.02em; line-height: 1.15; }
+.fde-card p { color: var(--muted); font-size: 14px; }
+.fde-proof { margin-top: auto; padding-top: 12px; border-top: 1px dashed var(--line-2); font-family: var(--f-mono); font-size: 11px; color: var(--dim); }
+.field-log { margin-top: 22px; display: flex; flex-wrap: wrap; gap: 8px 26px; align-items: center; padding: 16px 22px; border-radius: 18px; border: 1px dashed var(--line-2); font-family: var(--f-mono); font-size: 12px; letter-spacing: .04em; color: var(--muted); }
+.field-log .fl-label { letter-spacing: .16em; text-transform: uppercase; color: var(--cyan); font-size: 11px; }
+.field-log b { color: var(--text); font-weight: 700; margin-right: 6px; }
+.reveal.in.field-log > span { animation: cascadeIn .8s var(--ease) backwards; animation-delay: calc(var(--i, 0) * 70ms + 150ms); }
+@media (max-width: 1000px) { .fde-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 720px) { .fde-grid { grid-template-columns: 1fr; } .field-log { flex-direction: column; align-items: flex-start; } }

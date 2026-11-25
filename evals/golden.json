@@ -1,6 +1,7 @@
 {
   "thresholds": { "retrievalHit3": 0.85, "livePass": 0.8 },
   "cases": [
+    { "q": "Is Mayur a good fit for a Forward Deployed Engineer role?", "expect": ["Profile"], "must": ["client"] },
     { "q": "What did Mayur do at Capgemini?", "expect": ["Capgemini"], "must": ["capgemini", "python"] },
     { "q": "What was his job title at Capgemini?", "expect": ["Capgemini"], "must": ["software engineer"] },
     { "q": "How much did he reduce MTTR by?", "expect": ["Capgemini"], "must": ["25%"] },

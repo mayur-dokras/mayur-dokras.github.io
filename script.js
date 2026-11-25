@@ -288,7 +288,7 @@
     function initRoles() {
         const el = $('#roleText');
         if (!el) return;
-        const roles = ['GenAI Engineer', 'Backend Engineer', 'MLOps Engineer', 'LLM fine-tuning · LoRA', 'RAG systems builder', 'Python · FastAPI · Kafka'];
+        const roles = ['GenAI Engineer', 'Forward Deployed Engineer', 'Backend Engineer', 'MLOps Engineer', 'LLM fine-tuning · LoRA', 'RAG systems builder', 'Python · FastAPI · Kafka'];
         const glyphs = '!<>-_\\/[]{}~=+*^?#01';
         let i = 0;
         const scramble = (to) => {
@@ -545,7 +545,7 @@
     --------------------------------------------------------- */
     function initScrollFx() {
         // index children so they cascade in after their block reveals
-        ['.skill-list', '.cert-list', '.cred-col', '.tags', '.more-builds', '.pipeline'].forEach((sel) => {
+        ['.skill-list', '.cert-list', '.cred-col', '.tags', '.more-builds', '.pipeline', '.field-log'].forEach((sel) => {
             $$(sel).forEach((group) => {
                 [...group.children].forEach((c, i) => c.style.setProperty('--i', Math.min(i, 14)));
             });
@@ -559,7 +559,7 @@
         const band = $('.band');
         const orb = $('.contact-orb');
         // blocks that rise, unfold and settle as they scroll into view (scrubbed)
-        const blocks = $$('.bento-card, .tl-card, .proj, .pipeline, .stack-row, .cred-col, .terminal, .about-copy, .more-builds');
+        const blocks = $$('.bento-card, .tl-card, .proj, .pipeline, .stack-row, .cred-col, .terminal, .about-copy, .more-builds, .fde-card, .field-log');
         blocks.forEach((el) => el.classList.add('sfx-block'));
         const ease = (t) => 1 - Math.pow(1 - t, 3);
         let lastY = scrollY, skew = 0, target = 0, raf = 0;
