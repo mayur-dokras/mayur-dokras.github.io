@@ -593,3 +593,11 @@ a.src:hover { background: rgba(139,92,246,.25); }
     .sec-title { transform: none; }
     .band { transform: rotate(-2deg) scale(1.04); }
 }
+
+/* scrubbed scroll motion (JS sets the vars; individual transform props so existing transforms/tilt keep working) */
+.sfx .sfx-block { translate: 0 var(--sfx-y, 0px); scale: var(--sfx-s, 1); rotate: x var(--sfx-r, 0deg); transform-origin: 50% 100%; }
+.sfx .projects, .sfx .bento, .sfx .tl-item, .sfx .cred-grid, .sfx .stack-rows, .sfx .about-grid { perspective: 1200px; }
+.sfx .hero-content { will-change: transform, opacity, filter; }
+@media (prefers-reduced-motion: reduce) {
+    .sfx .sfx-block { translate: none; scale: none; rotate: none; }
+}

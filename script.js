@@ -551,35 +551,74 @@
             });
         });
         if (reduced) return;
+        document.documentElement.classList.add('sfx');
 
+        const hero = $('#home'), heroContent = $('.hero-content'), pit = $('#pit');
         const titles = $$('.sec-title');
+        const contactTitle = $('.contact-title');
         const band = $('.band');
         const orb = $('.contact-orb');
+        // blocks that rise, unfold and settle as they scroll into view (scrubbed)
+        const blocks = $$('.bento-card, .tl-card, .proj, .pipeline, .stack-row, .cred-col, .terminal, .about-copy, .more-builds');
+        blocks.forEach((el) => el.classList.add('sfx-block'));
+        const ease = (t) => 1 - Math.pow(1 - t, 3);
         let lastY = scrollY, skew = 0, target = 0, raf = 0;
 
         const frame = () => {
             raf = 0;
-            const vh = innerHeight;
+            const vh = innerHeight, y = scrollY;
+
+            // hero: content lifts away, shrinks and softens as you leave it
+            if (hero) {
+                const p = clamp(y / (hero.offsetHeight * 0.85), 0, 1);
+                if (heroContent) {
+                    heroContent.style.translate = `0 ${(-p * 140).toFixed(1)}px`;
+                    heroContent.style.scale = (1 - p * 0.12).toFixed(4);
+                    heroContent.style.opacity = (1 - p * 1.15).toFixed(3);
+                    heroContent.style.filter = p > 0.01 ? `blur(${(p * 10).toFixed(1)}px)` : '';
+                }
+                if (pit) pit.style.translate = `0 ${(p * 90).toFixed(1)}px`;
+            }
+
+            // section titles drift against the scroll
             titles.forEach((t) => {
                 const r = t.getBoundingClientRect();
-                if (r.bottom < -100 || r.top > vh + 100) return;
-                const p = (r.top + r.height / 2 - vh / 2) / vh; // -0.5 .. 0.5 around centre
-                t.style.setProperty('--py', (p * 36).toFixed(1) + 'px');
+                if (r.bottom < -150 || r.top > vh + 150) return;
+                const p = (r.top + r.height / 2 - vh / 2) / vh;
+                t.style.setProperty('--py', (p * 90).toFixed(1) + 'px');
             });
+
+            // scrubbed rise-and-unfold for cards and panels
+            blocks.forEach((el) => {
+                const r = el.getBoundingClientRect();
+                if (r.top > vh + 50 || r.bottom < -50) return;
+                const q = ease(clamp((vh - r.top) / (vh * 0.45), 0, 1));
+                el.style.setProperty('--sfx-y', ((1 - q) * 90).toFixed(1) + 'px');
+                el.style.setProperty('--sfx-s', (0.88 + q * 0.12).toFixed(4));
+                el.style.setProperty('--sfx-r', ((1 - q) * 14).toFixed(2) + 'deg');
+            });
+
+            // contact headline zooms up to full size
+            if (contactTitle) {
+                const r = contactTitle.getBoundingClientRect();
+                const q = ease(clamp((vh - r.top) / (vh * 0.7), 0, 1));
+                contactTitle.style.scale = (0.8 + q * 0.2).toFixed(4);
+            }
             if (orb) {
                 const r = orb.parentElement.getBoundingClientRect();
-                if (r.top < vh && r.bottom > 0) orb.style.setProperty('--orb-y', ((r.top / vh) * 120).toFixed(1) + 'px');
+                if (r.top < vh && r.bottom > 0) orb.style.setProperty('--orb-y', ((r.top / vh) * 160).toFixed(1) + 'px');
             }
-            // ease the band skew toward scroll velocity, then settle back
-            skew += (target - skew) * 0.18;
-            target *= 0.85;
+
+            // marquee band leans with scroll speed, then settles
+            skew += (target - skew) * 0.2;
+            target *= 0.86;
             if (band) band.style.setProperty('--band-skew', skew.toFixed(2) + 'deg');
-            if (Math.abs(skew) > 0.02 || Math.abs(target) > 0.02) raf = requestAnimationFrame(frame);
+            if (Math.abs(skew) > 0.03 || Math.abs(target) > 0.03) raf = requestAnimationFrame(frame);
             else if (band) band.style.setProperty('--band-skew', '0deg');
         };
         const onScroll = () => {
             const y = scrollY;
-            target = clamp((y - lastY) * 0.12, -6, 6);
+            target = clamp((y - lastY) * 0.3, -14, 14);
             lastY = y;
             if (!raf) raf = requestAnimationFrame(frame);
         };
