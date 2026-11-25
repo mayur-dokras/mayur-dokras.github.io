@@ -541,6 +541,54 @@
     }
 
     /* ---------------------------------------------------------
+       6b. SCROLL FX: cascades, title parallax, band lean
+    --------------------------------------------------------- */
+    function initScrollFx() {
+        // index children so they cascade in after their block reveals
+        ['.skill-list', '.cert-list', '.cred-col', '.tags', '.more-builds', '.pipeline'].forEach((sel) => {
+            $$(sel).forEach((group) => {
+                [...group.children].forEach((c, i) => c.style.setProperty('--i', Math.min(i, 14)));
+            });
+        });
+        if (reduced) return;
+
+        const titles = $$('.sec-title');
+        const band = $('.band');
+        const orb = $('.contact-orb');
+        let lastY = scrollY, skew = 0, target = 0, raf = 0;
+
+        const frame = () => {
+            raf = 0;
+            const vh = innerHeight;
+            titles.forEach((t) => {
+                const r = t.getBoundingClientRect();
+                if (r.bottom < -100 || r.top > vh + 100) return;
+                const p = (r.top + r.height / 2 - vh / 2) / vh; // -0.5 .. 0.5 around centre
+                t.style.setProperty('--py', (p * 36).toFixed(1) + 'px');
+            });
+            if (orb) {
+                const r = orb.parentElement.getBoundingClientRect();
+                if (r.top < vh && r.bottom > 0) orb.style.setProperty('--orb-y', ((r.top / vh) * 120).toFixed(1) + 'px');
+            }
+            // ease the band skew toward scroll velocity, then settle back
+            skew += (target - skew) * 0.18;
+            target *= 0.85;
+            if (band) band.style.setProperty('--band-skew', skew.toFixed(2) + 'deg');
+            if (Math.abs(skew) > 0.02 || Math.abs(target) > 0.02) raf = requestAnimationFrame(frame);
+            else if (band) band.style.setProperty('--band-skew', '0deg');
+        };
+        const onScroll = () => {
+            const y = scrollY;
+            target = clamp((y - lastY) * 0.12, -6, 6);
+            lastY = y;
+            if (!raf) raf = requestAnimationFrame(frame);
+        };
+        addEventListener('scroll', onScroll, { passive: true });
+        addEventListener('resize', onScroll, { passive: true });
+        frame();
+    }
+
+    /* ---------------------------------------------------------
        7. TERMINAL
     --------------------------------------------------------- */
     const Terminal = (() => {
@@ -1038,6 +1086,7 @@
         initRoles();
         initPointer();
         initScroll();
+        initScrollFx();
         initSpark();
         initChat();
         initCmdk();

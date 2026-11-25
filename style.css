@@ -553,3 +553,43 @@ a.src:hover { background: rgba(139,92,246,.25); }
 .jd-copy:hover { background: #fff; color: #05060a; }
 .jd-card.tone-redirect { --tone: var(--violet); }
 .jd-redirect { font-size: 14px; line-height: 1.55; color: var(--text); }
+
+/* ---------------- SotonBuddy launch strip ---------------- */
+.proj-launch { white-space: nowrap; max-width: 100%; display: inline-flex; align-self: flex-start; align-items: center; gap: 9px; padding: 8px 14px; border-radius: 999px; font-family: var(--f-mono); font-size: 12px; letter-spacing: .04em; color: var(--text, #e8eaf0); background: linear-gradient(100deg, color-mix(in srgb, var(--c1) 14%, transparent), color-mix(in srgb, var(--c2) 14%, transparent)); border: 1px solid color-mix(in srgb, var(--c1) 35%, transparent); transform: translateZ(22px); }
+.proj-launch svg { width: 14px; height: 14px; flex: none; margin-top: -2px; }
+.proj-launch b { color: var(--c2); font-weight: 700; }
+
+/* ---------------- Scroll effects ---------------- */
+/* section titles focus in from a soft blur, then drift with a light parallax */
+.sec-head.reveal .sec-title { filter: blur(14px); opacity: .2; letter-spacing: -0.02em; transition: filter 1.2s var(--ease), opacity 1.2s var(--ease), letter-spacing 1.4s var(--ease); transition-delay: .12s; }
+.sec-head.reveal.in .sec-title { filter: none; opacity: 1; letter-spacing: -0.045em; }
+.sec-title { transform: translate3d(0, var(--py, 0px), 0); will-change: transform; }
+
+/* index pills sweep a light across when they arrive */
+.sec-idx { position: relative; overflow: hidden; }
+.sec-idx::after { content: ""; position: absolute; inset: 0; background: linear-gradient(100deg, transparent 20%, rgba(34,211,238,.45) 50%, transparent 80%); transform: translateX(-120%); pointer-events: none; }
+.reveal.in .sec-idx::after, .sec-idx.reveal.in::after { animation: idxSweep 1.4s var(--ease) .35s 1 backwards; }
+@keyframes idxSweep { from { transform: translateX(-120%); } to { transform: translateX(120%); } }
+
+/* children cascade in after their block is revealed */
+.reveal.in .skill-list li,
+.reveal.in .cert,
+.reveal.in .cred-item,
+.reveal.in .tags span,
+.reveal.in .more-builds span,
+.reveal.in .pipe-node { animation: cascadeIn .8s var(--ease) backwards; animation-delay: calc(var(--i, 0) * 45ms + 150ms); }
+.reveal.in .cert { animation-name: cascadeSide; }
+@keyframes cascadeIn { from { opacity: 0; transform: translateY(14px) scale(.96); filter: blur(4px); } }
+@keyframes cascadeSide { from { opacity: 0; transform: translateX(-18px); filter: blur(4px); } }
+
+/* marquee band leans into the scroll speed */
+.band { transform: rotate(-2deg) scale(1.04) skewX(var(--band-skew, 0deg)); }
+
+/* contact orb drifts as you approach */
+.contact-orb { margin-top: var(--orb-y, 0px); }
+
+@media (prefers-reduced-motion: reduce) {
+    .sec-head.reveal .sec-title { filter: none; opacity: 1; letter-spacing: -0.045em; }
+    .sec-title { transform: none; }
+    .band { transform: rotate(-2deg) scale(1.04); }
+}

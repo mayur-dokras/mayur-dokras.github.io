@@ -12,8 +12,10 @@ questions:
 - Diploma in Information Technology, RIT Polytechnic, India (2014 to 2017), started right after 10th standard.
 
 ## Certifications
+- Practical Deep Agents: Implementing Autonomous Problem-Solving Loops (LinkedIn Learning, 2026)
 - Career Essentials in GitHub Professional Certificate (GitHub and LinkedIn Learning, 2026)
 - Claude Code in Action (Anthropic, 2026)
+- Docker Foundations Professional Certificate (LinkedIn Learning and Docker, 2026)
 - Hands-On Essentials: Data Warehousing Workshop (Snowflake, 2026)
 - Hands-On Essentials: Collaboration, Marketplace & Cost Estimation Workshop (Snowflake, 2026)
 - Cloud Computing (IBM, 2023)
